@@ -3,24 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VMSWebApplication.Domain.Concrete;
+using System.Data.Entity;
 
 namespace VMSWebApplication.Domain.Abstract
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly EFDbContext context;
+        private readonly DbContext context;
         private bool disposed;
         private Dictionary<string, object> repositories;
 
-        public UnitOfWork(EFDbContext context)
+        public UnitOfWork(DbContext context)
         {
             this.context = context;
         }
 
         public UnitOfWork()
         {
-            context = new EFDbContext();
+            //context = new DbContext("");
         }
 
         public void Dispose()

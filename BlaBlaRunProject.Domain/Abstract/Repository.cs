@@ -5,17 +5,16 @@ using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VMSWebApplication.Domain.Concrete;
 
 namespace VMSWebApplication.Domain.Abstract
 {
     public class Repository<TKey, TEntity> : IRepository<TKey, TEntity> where TEntity : class, IIdentityKey<TKey>
     { 
-        private readonly EFDbContext context;
+        private readonly DbContext context;
         private IDbSet<TEntity> entities;
         string errorMessage = string.Empty;
 
-        public Repository(EFDbContext context)
+        public Repository(DbContext context)
         {
             this.context = context;
         }
