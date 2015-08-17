@@ -2091,8 +2091,11 @@ fieldset[disabled] .btn-default.active {
 
 .btn-primary {
   color: #ffffff;
-  background-color: #428bca;
-  border-color: #357ebd;
+  /*background-color: #428bca;
+        border-color: #357ebd;
+  */
+  background-color: #FFBF00;  
+  border-color: #E0A800;  
 }
 
 .btn-primary:hover,
@@ -2101,8 +2104,10 @@ fieldset[disabled] .btn-default.active {
 .btn-primary.active,
 .open .dropdown-toggle.btn-primary {
   color: #ffffff;
-  background-color: #3276b1;
-  border-color: #285e8e;
+  /*background-color: #3276b1;
+  border-color: #285e8e;*/  
+  background-color: #E0A800;
+  border-color: #E0A800;
 }
 
 .btn-primary:active,
@@ -4940,7 +4945,7 @@ a.list-group-item.active > .badge,
   font-size: 21px;
   font-weight: 200;
   line-height: 2.1428571435;
-  color: inherit;
+  color: #F7F7F7;
   background-color: #eeeeee;
   background-image: url("Images/iStock_000012873107Medium.jpg");
   background-position:center;
