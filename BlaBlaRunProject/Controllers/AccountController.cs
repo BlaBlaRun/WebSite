@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using BlaBlaRunProject.WebUI.Models;
+using BlaBlaRunProject.DAL;
 
 namespace BlaBlaRunProject.WebUI.Controllers
 {
@@ -155,6 +156,7 @@ namespace BlaBlaRunProject.WebUI.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    var rolresult = UserManager.AddToRole(user.Id, EnumRoles.Normal.ToString());
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771

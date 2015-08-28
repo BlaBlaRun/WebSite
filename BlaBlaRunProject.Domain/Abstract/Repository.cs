@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VMSWebApplication.Domain.Abstract
+namespace BlaBlaRunProject.Domain.Abstract
 {
     public class Repository<TKey, TEntity> : IRepository<TKey, TEntity> where TEntity : class, IIdentityKey<TKey>
     { 

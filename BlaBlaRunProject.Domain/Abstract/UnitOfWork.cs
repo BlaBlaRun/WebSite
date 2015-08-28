@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 
-namespace VMSWebApplication.Domain.Abstract
+namespace BlaBlaRunProject.Domain.Abstract
 {
     public class UnitOfWork : IUnitOfWork
     {

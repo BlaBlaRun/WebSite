@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VMSWebApplication.Domain.Abstract
+namespace BlaBlaRunProject.Domain.Abstract
 {
     public interface IRepository<Tkey, TEntity> where TEntity : class, IIdentityKey<Tkey>
     {
