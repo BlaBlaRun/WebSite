@@ -117,18 +117,18 @@ body {
 }
 
 .jumbotron {
-  /*padding: 30px;*/
+  padding: 0px;
     position: relative;
     z-index: 2;
     margin: 0 -25px;        
-  /*padding: 30px;*/
+  padding: 0px;
   margin-bottom: 30px;
   font-size: 21px;
   font-weight: 200;
   line-height: 2.1428571435;
   background-image: url("Images/iStock_000012873107Medium.jpg");
   /*background-position:center;*/
-  background-size: 100%;
+  /*background-size: 100%;*/
   background-repeat: no-repeat;
   width: 100%;
   height: 100%;
@@ -137,8 +137,8 @@ body {
 .jumbotron .hp-hero-banner {
     position: absolute;
     width: 100%;
-    background: #fff;
-    background: rgba(255,255,255,0.4);
+    /*background: #fff;
+    background: rgba(255,255,255,0.4);*/
 }
 
 
@@ -239,15 +239,197 @@ body {
 
 @media screen and (min-width: 768px) {
   .jumbotron {
-    /*padding-top: 48px;*/
+    padding-top: 0px;
     padding-bottom: 48px;
   }
   .container .jumbotron {
-    /*padding-right: 60px;*/
-    /*padding-left: 60px;*/
+    padding-right: 0px;
+    padding-left: 0px;
   }
   .jumbotron h1 {
     font-size: 63px;
   }
 }
 
+/********************
+*   Mobile Styles   *
+********************/
+@media only screen and (max-width: 850px) {
+
+    /* header
+    ----------------------------------------------------------*/
+    header .float-left,
+    header .float-right {
+        float: none;
+    }
+
+    /* logo */
+    header .site-title {
+        margin: 10px;
+        text-align: center;
+    }
+
+    /* login */
+    #login {
+        font-size: .85em;
+        margin: 0 0 12px;
+        text-align: center;
+    }
+
+        #login ul {
+            margin: 5px 0;
+            padding: 0;
+        }
+
+        #login li {
+            display: inline;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #login a {
+            background: none;
+            color: #999;
+            font-weight: 600;
+            margin: 2px;
+            padding: 0;
+        }
+
+        #login a:hover {
+            color: #333;
+        }
+
+    /* menu */
+    nav {
+        margin-bottom: 5px;
+    }
+
+    ul#menu {
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+
+        ul#menu li {
+            margin: 0;
+            padding: 0;
+        }
+
+
+    /* main layout
+    ----------------------------------------------------------*/
+    .main-content,
+    .featured + .main-content {
+        background-position: 10px 0;
+    }
+
+    .content-wrapper {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    .featured .content-wrapper {
+        padding: 10px;
+    }
+
+    /* page content */
+    article, aside {
+        float: none;
+        width: 100%;
+    }
+
+    /* ordered list */
+    ol.round {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+        ol.round li {
+            padding-left: 10px;
+            margin: 25px 0;
+        }
+
+            ol.round li.zero,
+            ol.round li.one,
+            ol.round li.two,
+            ol.round li.three,
+            ol.round li.four,
+            ol.round li.five,
+            ol.round li.six,
+            ol.round li.seven,
+            ol.round li.eight,
+            ol.round li.nine {
+                background: none;
+            }
+
+     /* features */
+     section.feature {
+        float: none;
+        padding: 10px;
+        width: auto;
+     }
+
+        section.feature img {
+            color: #999;
+            content: attr(alt);
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+
+    /* forms */
+    input {
+        width: 90%;
+    }
+
+    /* login page */
+    #loginForm {
+        border-right: none;
+        float: none;
+        width: auto;
+    }
+
+        #loginForm .validation-error {
+            display: block;
+            margin-left: 15px;
+        }
+
+    #socialLoginForm {
+        margin-left: 0;
+        float: none;
+        width: auto;
+    }
+
+
+    /* footer
+    ----------------------------------------------------------*/
+    footer .float-left,
+    footer .float-right {
+        float: none;
+    }
+
+    footer {
+        text-align: center;
+        height: auto;
+        padding: 10px 0;
+    }
+
+        footer p {
+            margin: 0;
+        }
+}
+
+
+.header-padding {
+    padding: 5px;
+}
+
+.float-left {
+    float:left;
+    padding: 5px;
+}
+
+.row-wrapper {
+    width: 500px;
+    overflow: auto; /* so the size of the wrapper is alway the size of the longest content */
+}
