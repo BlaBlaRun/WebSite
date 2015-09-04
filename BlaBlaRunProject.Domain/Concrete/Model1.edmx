@@ -13,15 +13,8 @@
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
         <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="AppUserSet" EntityType="Model1.AppUser" />
           <EntitySet Name="WorkoutSet" EntityType="Model1.Workout" />
         </EntityContainer>
-        <EntityType Name="AppUser">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
         <EntityType Name="Workout">
           <Key>
             <PropertyRef Name="Id" />
@@ -30,9 +23,12 @@
           <Property Name="StartDateTime" Type="DateTime" Nullable="false" />
           <Property Name="StartGeoPoint" Type="GeometryPoint" Nullable="false" />
           <Property Name="AVGPace" Type="Time" Nullable="false" />
-          <Property Name="ElevationGain" Type="String" Nullable="false" />
+          <Property Name="ElevationGain" Type="String" Nullable="true" />
           <Property Name="Circular" Type="Boolean" Nullable="false" />
-          <Property Name="EndGeoPoint" Type="GeographyPoint" Nullable="false" />
+          <Property Name="EndGeoPoint" Type="GeographyPoint" Nullable="true" />
+          <Property Name="Distance" Type="Int32" Nullable="false" />
+          <Property Name="MaxNumberPeople" Type="Int32" Nullable="true" />
+          <Property Name="AspNetUserId" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
