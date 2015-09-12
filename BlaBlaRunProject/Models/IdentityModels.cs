@@ -1,8 +1,10 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+
 
 namespace BlaBlaRunProject.WebUI.Models
 {
@@ -16,6 +18,8 @@ namespace BlaBlaRunProject.WebUI.Models
             // Add custom user claims here
             return userIdentity;
         }
+        public int LoginCount { get; set; }
+        public DateTime? LastLoginDateTime { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

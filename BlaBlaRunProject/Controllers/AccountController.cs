@@ -80,12 +80,26 @@ namespace BlaBlaRunProject.WebUI.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    var user = await UserManager.FindAsync(model.Email, model.Password);
+                    if (user != null)
+                    {
+                        user.LoginCount += 1;
+                        user.LastLoginDateTime = DateTime.UtcNow;
+                        UserManager.Update(user);
+                    }
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
+                    var userFailure = await UserManager.FindByEmailAsync(model.Email);
+                    if (userFailure != null)
+                    {
+                        userFailure.AccessFailedCount += 1;
+                    }
+                    ModelState.AddModelError("", "Invalid login attempt.");
+                    return View(model);
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return View(model);
