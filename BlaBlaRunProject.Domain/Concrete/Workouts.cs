@@ -12,17 +12,11 @@ namespace BlaBlaRunProject.Domain.Concrete
     using System;
     using System.Collections.Generic;
     
-    public partial class Users
+    public partial class Workouts
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Users()
-        {
-            this.Workouts = new HashSet<Workouts>();
-        }
-    
         public long Id { get; set; }
+        public long UsersId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Workouts> Workouts { get; set; }
+        public virtual Users Users { get; set; }
     }
 }

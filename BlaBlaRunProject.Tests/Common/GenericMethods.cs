@@ -2,25 +2,24 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using BlaBlaRunProject.Domain.Abstract;
-using BlaBlaRunProject.Domain.Concrete;
+using BlaBlaRunProject.DataAccess.Abstract;
 
 namespace BlaBlaRunProject.Tests.Common
 {
     public class GenericMethods
     {
 
-        public static List<Workout> SetupVesselList()
-        {
-            var oWorkout1 = new Workout() { Id = 0 };
-            var oWorkout2 = new Workout() { Id = 1 };
-            var oWorkout3 = new Workout() { Id = 2 };
-            var oWorkout4 = Activator.CreateInstance(typeof(Workout));
+        //public static List<Workout> SetupVesselList()
+        //{
+        //    var oWorkout1 = new Workout() { Id = 0 };
+        //    var oWorkout2 = new Workout() { Id = 1 };
+        //    var oWorkout3 = new Workout() { Id = 2 };
+        //    var oWorkout4 = Activator.CreateInstance(typeof(Workout));
 
-            var lVessels = new List<Workout>() { oWorkout1, oWorkout2, oWorkout3 };
+        //    var lVessels = new List<Workout>() { oWorkout1, oWorkout2, oWorkout3 };
 
-            return lVessels;
-        }
+        //    return lVessels;
+        //}
 
         public static Moq.Mock<IUnitOfWork> SetupUnitOfWork<TKey, TModel, TRepo>(Moq.Mock<TRepo> oRepository)
             where TModel : class, IIdentityKey<TKey>
@@ -33,14 +32,14 @@ namespace BlaBlaRunProject.Tests.Common
         }
 
 
-        public static Moq.Mock<TRepo> SetupRepository<TModel, TRepo, TIdentityType>(List<TModel> lModels)
-            where TModel : class, IIdentityKey<TIdentityType>
-            where TRepo : class, IRepository<TIdentityType, TModel>
-            where TIdentityType : struct,
+        public static Moq.Mock<TRepo> SetupRepository<TKey, TModel, TRepo>(List<TModel> lModels)
+            where TModel : class, IIdentityKey<TKey>
+            where TRepo : class, IRepository<TKey, TModel>
+            where TKey : struct,
               IComparable,
-              IComparable<TIdentityType>,
+              IComparable<TKey>,
               IConvertible,
-              IEquatable<TIdentityType>,
+              IEquatable<TKey>,
               IFormattable
         {
             IQueryable<TModel> queryableList = lModels.AsQueryable();
@@ -53,7 +52,7 @@ namespace BlaBlaRunProject.Tests.Common
 
             Moq.Mock<TRepo> repository = new Moq.Mock<TRepo>();
             repository.Setup(x => x.Entities).Returns(mockSet.Object);
-            repository.Setup(x => x.GetById(Moq.It.IsAny<TIdentityType>())).Returns((int i) => lModels.Find(x => x.Id.Equals(i)));
+            repository.Setup(x => x.GetById(Moq.It.IsAny<TKey>())).Returns((int i) => lModels.Find(x => x.Id.Equals(i)));
             repository.Setup(x => x.Insert(Moq.It.IsAny<TModel>())).Callback<TModel>(y =>
             {
                 var item = lModels.OrderByDescending(x => x.Id).FirstOrDefault();

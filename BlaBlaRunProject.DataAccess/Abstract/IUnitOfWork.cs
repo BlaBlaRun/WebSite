@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlaBlaRunProject.Domain.Abstract
+namespace BlaBlaRunProject.DataAccess.Abstract
 {
     public interface IUnitOfWork : IDisposable
     {

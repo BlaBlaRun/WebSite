@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 
-namespace BlaBlaRunProject.Domain.Abstract
+namespace BlaBlaRunProject.DataAccess.Abstract
 {
     public class UnitOfWork : IUnitOfWork
     {

@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using BlaBlaRunProject.Domain.Abstract;
-
+using BlaBlaRunProject.DataAccess.Abstract;
 
 namespace BlaBlaRunProject.WebUI.Controllers
 {
-    public interface IFMCController<TEntity, TIdentityType>
+    public interface IMVCController<TEntity, TIdentityType>
         where TEntity : class, IIdentityKey<TIdentityType>
         where TIdentityType : struct,
           IComparable,

@@ -13,10 +13,10 @@ namespace BlaBlaRunProject.Domain.Concrete
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Model1Container : DbContext
+    public partial class EFDBContextContainer : DbContext
     {
-        public Model1Container()
-            : base("name=Model1Container")
+        public EFDBContextContainer()
+            : base("name=EFDBContextContainer")
         {
         }
     
@@ -25,7 +25,7 @@ namespace BlaBlaRunProject.Domain.Concrete
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Workout> WorkoutSet { get; set; }
+        public virtual DbSet<Workouts> WorkoutsSet { get; set; }
         public virtual DbSet<Users> UsersSet { get; set; }
     }
 }

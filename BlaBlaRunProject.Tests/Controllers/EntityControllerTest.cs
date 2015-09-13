@@ -1,23 +1,18 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using BlaBlaRunProject.Domain.Abstract;
 using BlaBlaRunProject.Tests.Common;
 using System.Web.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 using BlaBlaRunProject.WebUI.Controllers;
+using BlaBlaRunProject.DataAccess.Abstract;
 
 namespace BlaBlaRunProject.Tests.Controllers
 {
-    public class EntityControllerTest<TEntity, TController, TIdentityType> 
-        where TEntity : class, IIdentityKey<TIdentityType>
-        where TController : Controller, IFMCController<TEntity, TIdentityType>
-        where TIdentityType : struct,
-          IComparable,
-          IComparable<TIdentityType>,
-          IConvertible,
-          IEquatable<TIdentityType>,
-          IFormattable
+    public class EntityControllerTest<TKey, TEntity, TController>
+        where TKey : struct, IComparable, IComparable<TKey>, IConvertible, IEquatable<TKey>, IFormattable
+        where TEntity : class, IIdentityKey<TKey>
+        where TController : Controller, IMVCController<TEntity, TKey>
     {
         public delegate void ParamsFunc(TEntity oEntity);
 
@@ -26,8 +21,8 @@ namespace BlaBlaRunProject.Tests.Controllers
         public async void Index(Func<List<TEntity>> SetupList)
         {
             var lEntities = SetupList();
-            var oRepository = GenericMethods.SetupRepository<TEntity, IRepository<TIdentityType, TEntity>, TIdentityType>(lEntities);
-            var oUnitOfWork = GenericMethods.SetupUnitOfWork<TIdentityType, TEntity, IRepository<TIdentityType, TEntity>>(oRepository);
+            var oRepository = GenericMethods.SetupRepository<TKey, TEntity, IRepository<TKey, TEntity>>(lEntities);
+            var oUnitOfWork = GenericMethods.SetupUnitOfWork<TKey, TEntity, IRepository<TKey, TEntity>>(oRepository);
 
 
             var iEntitiesCount = oRepository.Object.Entities.Count();
@@ -48,8 +43,8 @@ namespace BlaBlaRunProject.Tests.Controllers
         public async void Details(Func<List<TEntity>> SetupList)
         {
             var lEntities = SetupList();
-            var oRepository = GenericMethods.SetupRepository<TEntity, IRepository<TIdentityType, TEntity>, TIdentityType>(lEntities);
-            var oUnitOfWork = GenericMethods.SetupUnitOfWork<TIdentityType, TEntity, IRepository<TIdentityType, TEntity>>(oRepository);
+            var oRepository = GenericMethods.SetupRepository<TKey, TEntity, IRepository<TKey, TEntity>>(lEntities);
+            var oUnitOfWork = GenericMethods.SetupUnitOfWork<TKey, TEntity, IRepository<TKey, TEntity>>(oRepository);
 
             var oEntity = oRepository.Object.Entities.FirstOrDefault();
 
@@ -68,8 +63,8 @@ namespace BlaBlaRunProject.Tests.Controllers
         public async void Create(Func<List<TEntity>> SetupList, Func<TEntity> TestCreator)
         {
             var lEntities = SetupList();
-            var oRepository = GenericMethods.SetupRepository<TEntity, IRepository<TIdentityType, TEntity>, TIdentityType>(lEntities);
-            var oUnitOfWork = GenericMethods.SetupUnitOfWork<TIdentityType, TEntity, IRepository<TIdentityType, TEntity>>(oRepository);
+            var oRepository = GenericMethods.SetupRepository<TKey, TEntity, IRepository<TKey, TEntity>>(lEntities);
+            var oUnitOfWork = GenericMethods.SetupUnitOfWork<TKey, TEntity, IRepository<TKey, TEntity>>(oRepository);
 
             var iEntitiesCount = oRepository.Object.Entities.Count();
             var oEntityLastOld = oRepository.Object.Entities.OrderByDescending(x => x.Id).FirstOrDefault();
@@ -92,8 +87,8 @@ namespace BlaBlaRunProject.Tests.Controllers
         public async void Edit(Func<List<TEntity>> SetupList)
         {
             var lEntities = SetupList();
-            var oRepository = GenericMethods.SetupRepository<TEntity, IRepository<TIdentityType, TEntity>, TIdentityType>(lEntities);
-            var oUnitOfWork = GenericMethods.SetupUnitOfWork<TIdentityType, TEntity, IRepository<TIdentityType, TEntity>>(oRepository);
+            var oRepository = GenericMethods.SetupRepository<TKey, TEntity, IRepository<TKey, TEntity>>(lEntities);
+            var oUnitOfWork = GenericMethods.SetupUnitOfWork<TKey, TEntity, IRepository<TKey, TEntity>>(oRepository);
             var oEntity = oRepository.Object.Entities.FirstOrDefault();
 
             // Arrange
@@ -111,8 +106,8 @@ namespace BlaBlaRunProject.Tests.Controllers
         public async void EditPost(Func<List<TEntity>> SetupList, ParamsFunc TestEditEntity)
         {
             var lEntities = SetupList();
-            var oRepository = GenericMethods.SetupRepository<TEntity, IRepository<TIdentityType, TEntity>, TIdentityType>(lEntities);
-            var oUnitOfWork = GenericMethods.SetupUnitOfWork<TIdentityType, TEntity, IRepository<TIdentityType, TEntity>>(oRepository);
+            var oRepository = GenericMethods.SetupRepository<TKey, TEntity, IRepository<TKey, TEntity>>(lEntities);
+            var oUnitOfWork = GenericMethods.SetupUnitOfWork<TKey, TEntity, IRepository<TKey, TEntity>>(oRepository);
             var oEntity = oRepository.Object.Entities.FirstOrDefault();
             var oEntityLastOldId = oEntity.Id;
 
@@ -138,7 +133,7 @@ namespace BlaBlaRunProject.Tests.Controllers
             //var unitOfWork = new Moq.Mock<IUnitOfWork>();
             //IRepository<int,Vessel> oRepository = unitOfWork.Object.Repository<int,Vessel>();
             var oUnitOfWork = new UnitOfWork();
-            IRepository<TIdentityType, TEntity> oRepository = oUnitOfWork.Repository<TIdentityType, TEntity>();
+            IRepository<TKey, TEntity> oRepository = oUnitOfWork.Repository<TKey, TEntity>();
 
             var iEntitiesCount = oRepository.Entities.Count();
 
@@ -158,7 +153,7 @@ namespace BlaBlaRunProject.Tests.Controllers
         public async void DetailsWithDB()
         {
             var oUnitOfWork = new UnitOfWork();
-            IRepository<TIdentityType, TEntity> oRepository = oUnitOfWork.Repository<TIdentityType, TEntity>();
+            IRepository<TKey, TEntity> oRepository = oUnitOfWork.Repository<TKey, TEntity>();
             var oEntity = oRepository.Entities.FirstOrDefault();
 
             // Arrange
@@ -176,7 +171,7 @@ namespace BlaBlaRunProject.Tests.Controllers
         public async void CreateWithDB(Func<TEntity> TestCreator)
         {
             var oUnitOfWork = new UnitOfWork();
-            IRepository<TIdentityType, TEntity> oRepository = oUnitOfWork.Repository<TIdentityType, TEntity>();
+            IRepository<TKey, TEntity> oRepository = oUnitOfWork.Repository<TKey, TEntity>();
             var lEntities = oRepository.Entities.ToList();
             TEntity oEntityLastOld = lEntities.OrderByDescending(x => x.Id).FirstOrDefault();
             //TEntity oEntityLastOld = oRepository.Entities.OrderByDescending(x => x.Id).FirstOrDefault();
@@ -200,7 +195,7 @@ namespace BlaBlaRunProject.Tests.Controllers
         public async void EditWithDB()
         {
             var oUnitOfWork = new UnitOfWork();
-            IRepository<TIdentityType, TEntity> oRepository = oUnitOfWork.Repository<TIdentityType, TEntity>();
+            IRepository<TKey, TEntity> oRepository = oUnitOfWork.Repository<TKey, TEntity>();
             var oEntity = oRepository.Entities.FirstOrDefault();
 
             // Arrange
@@ -218,7 +213,7 @@ namespace BlaBlaRunProject.Tests.Controllers
         public async void EditWithPushDB(ParamsFunc TestEditEntity)
         {
             var oUnitOfWork = new UnitOfWork();
-            IRepository<TIdentityType, TEntity> oRepository = oUnitOfWork.Repository<TIdentityType, TEntity>();
+            IRepository<TKey, TEntity> oRepository = oUnitOfWork.Repository<TKey, TEntity>();
             var oEntity = oRepository.Entities.FirstOrDefault();
             var oEntityLastOldId = oEntity.Id;
 
