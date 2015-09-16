@@ -3,23 +3,24 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using BlaBlaRunProject.DataAccess.Abstract;
+using BlaBlaRunProject.Domain.Concrete;
 
 namespace BlaBlaRunProject.Tests.Common
 {
     public class GenericMethods
     {
 
-        //public static List<Workout> SetupVesselList()
-        //{
-        //    var oWorkout1 = new Workout() { Id = 0 };
-        //    var oWorkout2 = new Workout() { Id = 1 };
-        //    var oWorkout3 = new Workout() { Id = 2 };
-        //    var oWorkout4 = Activator.CreateInstance(typeof(Workout));
+        public static List<Workouts> SetupWorkoutsList()
+        {
+            var oWorkout1 = new Workouts() { Id = 0 };
+            var oWorkout2 = new Workouts() { Id = 1 };
+            var oWorkout3 = new Workouts() { Id = 2 };
+            var oWorkout4 = Activator.CreateInstance(typeof(Workouts));
 
-        //    var lVessels = new List<Workout>() { oWorkout1, oWorkout2, oWorkout3 };
+            var lWorkouts = new List<Workouts>() { oWorkout1, oWorkout2, oWorkout3 };
 
-        //    return lVessels;
-        //}
+            return lWorkouts;
+        }
 
         public static Moq.Mock<IUnitOfWork> SetupUnitOfWork<TKey, TModel, TRepo>(Moq.Mock<TRepo> oRepository)
             where TModel : class, IIdentityKey<TKey>

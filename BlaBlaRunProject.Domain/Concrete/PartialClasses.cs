@@ -17,9 +17,9 @@ namespace BlaBlaRunProject.Domain.Concrete
     }
 
     //[MetadataType(typeof(BlaBlaRunProject.Domain.Entities.UsersDTO))]
-    //public partial class Users : Abstract.IIdentityKey<long>
-    //{
+    public partial class Users : IIdentityKey<long>
+    {
 
-    //}
+    }
 
 }

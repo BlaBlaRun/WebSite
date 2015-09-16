@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlaBlaRunProject.Domain.Entities
 {
-    public class UsersDTO
+    public class WorkoutsDTO
     {
     }
 }

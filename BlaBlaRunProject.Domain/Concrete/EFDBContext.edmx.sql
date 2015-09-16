@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 09/12/2015 20:53:40
+-- Date Created: 09/16/2015 23:24:37
 -- Generated from EDMX file: C:\Projects\BlaBlaRunProject\BlaBlaRunProject.Domain\Concrete\EFDBContext.edmx
 -- --------------------------------------------------
 
@@ -17,20 +17,11 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_WorkoutsUsers]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[WorkoutsSet] DROP CONSTRAINT [FK_WorkoutsUsers];
-GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[WorkoutsSet]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[WorkoutsSet];
-GO
-IF OBJECT_ID(N'[dbo].[UsersSet]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[UsersSet];
-GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -38,14 +29,14 @@ GO
 
 -- Creating table 'WorkoutsSet'
 CREATE TABLE [dbo].[WorkoutsSet] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [UsersId] int  NOT NULL
+    [Id] bigint IDENTITY(1,1) NOT NULL,
+    [UsersId] bigint  NOT NULL
 );
 GO
 
 -- Creating table 'UsersSet'
 CREATE TABLE [dbo].[UsersSet] (
-    [Id] int IDENTITY(1,1) NOT NULL
+    [Id] bigint IDENTITY(1,1) NOT NULL
 );
 GO
 
