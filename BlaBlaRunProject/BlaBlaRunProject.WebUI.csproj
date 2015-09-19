@@ -225,6 +225,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Interfaces\BaseApiController.cs" />
     <Compile Include="Controllers\Interfaces\IMVCController.cs" />
     <Compile Include="Controllers\Interfaces\IApiController.cs" />
     <Compile Include="Controllers\ManageController.cs" />

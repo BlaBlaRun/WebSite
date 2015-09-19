@@ -12,125 +12,42 @@ using System.Web.Http.Description;
 using BlaBlaRunProject.Domain.Concrete;
 using BlaBlaRunProject.WebUI.Controllers;
 using BlaBlaRunProject.DataAccess.Abstract;
+using BlaBlaRunProject.Controllers.Interfaces;
 
 namespace BlaBlaRunProject.Controllers
 {
-    public class WorkoutsController : ApiController, IApiController<long, Workouts>
-    {
-        private IUnitOfWork unitOfWork;
-        private IRepository<long, Workouts> repository;
+    public class WorkoutsController : BaseApiController<long, Workouts>, IApiController<long, Workouts>
+    {       
 
-        public WorkoutsController(IUnitOfWork uow)
+        public WorkoutsController(IUnitOfWork uow):base(uow)
         {
-            unitOfWork = uow;
-            repository = unitOfWork.Repository<long, Workouts>();
         }
 
-        // GET: api/Workouts
-        public IQueryable<Workouts> Get()
-        {
-            //return db.WorkoutsSet;
-            return repository.Entities;
-        }
 
-        // GET: api/Workouts/5
+
+        // GET: api/TEntity/5
         [ResponseType(typeof(Workouts))]
         public async Task<IHttpActionResult> Get(long id)
         {
-            //Workouts workouts = await db.WorkoutsSet.FindAsync(id);
-            Workouts workouts = await repository.GetByIdAsync(id);
-            if (workouts == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(workouts);
+            return await base.Get(id);
         }
 
-        // PUT: api/Workouts/5
-        [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> Put(long id, Workouts workouts)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
 
-            if (id != workouts.Id)
-            {
-                return BadRequest();
-            }
 
-            //db.Entry(workouts).State = EntityState.Modified;
-
-            //try
-            //{
-            //    await db.SaveChangesAsync();
-            //}
-            //catch (DbUpdateConcurrencyException)
-            //{
-            //    if (!WorkoutsExists(id))
-            //    {
-            //        return NotFound();
-            //    }
-            //    else
-            //    {
-            //        throw;
-            //    }
-            //}
-
-            await repository.UpdateAsync(workouts);
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
-        // POST: api/Workouts
+        // POST: api/TEntity
         [ResponseType(typeof(Workouts))]
-        public async Task<IHttpActionResult> Post(Workouts workouts)
+        public async Task<IHttpActionResult> Post(Workouts TEntity)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
 
-            //db.WorkoutsSet.Add(workouts);
-            //await db.SaveChangesAsync();
-            await repository.InsertAsync(workouts);
-
-            return CreatedAtRoute("DefaultApi", new { id = workouts.Id }, workouts);
+            return await base.Post(TEntity);
         }
 
-        // DELETE: api/Workouts/5
+        // DELETE: api/TEntity/5
         [ResponseType(typeof(Workouts))]
         public async Task<IHttpActionResult> Delete(long id)
         {
-            //Workouts workouts = await db.WorkoutsSet.FindAsync(id);
-            Workouts workouts = await repository.GetByIdAsync(id);
-            if (workouts == null)
-            {
-                return NotFound();
-            }
-
-            //db.WorkoutsSet.Remove(workouts);
-            //await db.SaveChangesAsync();
-            await repository.DeleteAsync(workouts);
-
-            return Ok(workouts);
+            return await base.Delete(id);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                //db.Dispose();
-                unitOfWork.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private bool WorkoutsExists(int id)
-        {
-            //return db.WorkoutsSet.Count(e => e.Id == id) > 0;
-            return repository.Entities.Count(e => e.Id == id) > 0;
-        }
     }
 }
