@@ -13,6 +13,7 @@ using BlaBlaRunProject.Domain.Concrete;
 using BlaBlaRunProject.WebUI.Controllers;
 using BlaBlaRunProject.DataAccess.Abstract;
 using BlaBlaRunProject.Controllers.Interfaces;
+using Newtonsoft.Json;
 
 namespace BlaBlaRunProject.Controllers
 {
@@ -25,7 +26,7 @@ namespace BlaBlaRunProject.Controllers
 
 
 
-        // GET: api/TEntity/5
+        // GET: api/Workouts/5
         [ResponseType(typeof(Workouts))]
         public async Task<IHttpActionResult> Get(long id)
         {
@@ -34,7 +35,7 @@ namespace BlaBlaRunProject.Controllers
 
 
 
-        // POST: api/TEntity
+        // POST: api/Workouts
         [ResponseType(typeof(Workouts))]
         public async Task<IHttpActionResult> Post(Workouts TEntity)
         {
@@ -42,11 +43,31 @@ namespace BlaBlaRunProject.Controllers
             return await base.Post(TEntity);
         }
 
-        // DELETE: api/TEntity/5
+        // DELETE: api/Workouts/5
         [ResponseType(typeof(Workouts))]
         public async Task<IHttpActionResult> Delete(long id)
         {
             return await base.Delete(id);
+        }
+
+        public IHttpActionResult LoadPhoneNumbers()
+        {
+            var phoneNumbers = new List<PhoneNumber>(new[]
+            {
+        new PhoneNumber { Number = "555 123 4567", Description = "George" },
+        new PhoneNumber { Number = "555 765 4321", Description = "Kevin" },
+        new PhoneNumber { Number = "555 555 4781", Description = "Sam" }
+    });
+            var settings = new JsonSerializerSettings
+            {
+                
+                ReferenceLoopHandling = ReferenceLoopHandling.Error
+            };
+
+            return Json(new
+            {
+                aaData = phoneNumbers.Select(x => new[] { x.Number, x.Description })
+            }, settings);
         }
 
     }

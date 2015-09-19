@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 09/19/2015 19:15:44
+-- Date Created: 09/19/2015 20:07:02
 -- Generated from EDMX file: C:\Projects\BlaBlaRunProject\BlaBlaRunProject.Domain\Concrete\EFDBContext.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [BlaBlaRunUsers];
+USE [BlaBlaRunData];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -48,8 +48,8 @@ CREATE TABLE [dbo].[WorkoutsSet] (
     [Distance] float  NULL,
     [MaxNumberPeaople] smallint  NULL,
     [City] nvarchar(max)  NULL,
-    [Region] nvarchar(max)  NOT NULL,
-    [Country] nvarchar(max)  NOT NULL,
+    [Region] nvarchar(max)  NULL,
+    [Country] nvarchar(max)  NULL,
     [ElevationGain] float  NULL
 );
 GO
