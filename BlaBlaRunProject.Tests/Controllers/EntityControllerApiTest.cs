@@ -11,6 +11,7 @@ using BlaBlaRunProject.Tests.Common;
 using System.Net.Http;
 using BlaBlaRunProject.WebUI.Controllers;
 using System.Web.Http;
+using System.Threading.Tasks;
 
 namespace BlaBlaRunProject.Tests.Controllers
 {
@@ -64,7 +65,7 @@ namespace BlaBlaRunProject.Tests.Controllers
             //Assert.AreEqual(oEntity, result.ToString);
         }
 
-        public async void Put(Func<List<TEntity>> SetupList, Func<long, TEntity> CreateEntity, Func<Users, bool> TestEditEntity)
+        public async Task Post(Func<List<TEntity>> SetupList, Func<TKey, TEntity> CreateEntity, Func<TEntity, bool> TestEditEntity)
         {
             var lEntities = SetupList();
             var oRepository = GenericMethods.SetupRepository<TKey, TEntity, IRepository<TKey, TEntity>>(lEntities);
@@ -80,7 +81,8 @@ namespace BlaBlaRunProject.Tests.Controllers
             TEntity oEntity = CreateEntity(z);
 
             // Act
-            IHttpActionResult result = await controller.Put(z, oEntity) as IHttpActionResult;
+            IHttpActionResult result = await controller.Post(oEntity) as IHttpActionResult;
+            var oEntityNew = oRepository.Object.Entities.OrderByDescending(x => x.Id).FirstOrDefault();
 
             // Assert            
             //HttpResponseMessage response2 = result;// await result.ExecuteAsync();
@@ -90,34 +92,42 @@ namespace BlaBlaRunProject.Tests.Controllers
 
             //}
             dynamic oEntityLastOldId = oEntityLastOld.Id;
+
             Assert.AreEqual(oEntityLastOldId + 1, oEntity.Id);
             Assert.AreEqual(iEntitiesCount + 1, oRepository.Object.Entities.Count());
+            Assert.IsTrue(TestEditEntity(oEntityNew));
         }
 
-        public async void Post(Func<List<TEntity>> SetupList, ParamsFunc EditEntity, Func<Users, bool> TestEditEntity)
+        public async Task Put(Func<List<TEntity>> SetupList, Func<TEntity, TEntity> EditEntity, Func<TEntity, bool> TestEditEntity)
         {
             var lEntities = SetupList();
             var oRepository = GenericMethods.SetupRepository<TKey, TEntity, IRepository<TKey, TEntity>>(lEntities);
             var oUnitOfWork = GenericMethods.SetupUnitOfWork<TKey, TEntity, IRepository<TKey, TEntity>>(oRepository);
             var oEntity = oRepository.Object.Entities.FirstOrDefault();
-            var oEntityLastOldId = oEntity.Id;
+            var oEntityId = oEntity.Id;
 
             // Arrange
             TController controller = (TController)Activator.CreateInstance(typeof(TController), oUnitOfWork.Object);
 
-            EditEntity(oEntity);
+            HttpConfiguration configuration = new HttpConfiguration();
+            HttpRequestMessage request = new HttpRequestMessage();
+            controller.Request = request;
+            controller.Request.Properties["MS_HttpConfiguration"] = configuration;
+
+            var oEntityDelta = EditEntity(oEntity);
 
             // Act
-            IHttpActionResult result = await controller.Post(oEntity) as IHttpActionResult;
-
+            IHttpActionResult result = await controller.Put(oEntity.Id, oEntityDelta) as IHttpActionResult;
+            var oEntityNew = oRepository.Object.Entities.FirstOrDefault();
 
             // Assert
-            Assert.AreEqual(oEntityLastOldId, oEntity.Id);
-            //Assert.IsTrue(TestEditEntity());
+            Assert.AreEqual(oEntityId, oEntityNew.Id);
+            Assert.IsTrue(TestEditEntity(oEntityNew));
+
         }
+        
 
-
-        public async void Delete(Func<List<TEntity>> SetupList)
+        public async Task Delete(Func<List<TEntity>> SetupList)
         {
             var lEntities = SetupList();
             var oRepository = GenericMethods.SetupRepository<TKey, TEntity, IRepository<TKey, TEntity>>(lEntities);
@@ -130,15 +140,16 @@ namespace BlaBlaRunProject.Tests.Controllers
 
             // Arrange
             TController controller = (TController)Activator.CreateInstance(typeof(TController), oUnitOfWork.Object);
-            
+
 
             // Act
             IHttpActionResult result = await controller.Delete(oEntityLastOld.Id) as IHttpActionResult;
 
 
             // Assert
-            Assert.AreEqual(iEntitiesCount -1, oRepository.Object.Entities.Count());
+            Assert.AreEqual(iEntitiesCount - 1, oRepository.Object.Entities.Count());
         }
+
 
 
         #endregion

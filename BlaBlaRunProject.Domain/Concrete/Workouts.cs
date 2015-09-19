@@ -16,6 +16,17 @@ namespace BlaBlaRunProject.Domain.Concrete
     {
         public long Id { get; set; }
         public long UsersId { get; set; }
+        public System.DateTime StartDateTime { get; set; }
+        public System.Data.Entity.Spatial.DbGeography StartLocation { get; set; }
+        public Nullable<System.TimeSpan> AVGPace { get; set; }
+        public bool Circular { get; set; }
+        public System.Data.Entity.Spatial.DbGeography EndLocation { get; set; }
+        public Nullable<double> Distance { get; set; }
+        public Nullable<short> MaxNumberPeaople { get; set; }
+        public string City { get; set; }
+        public string Region { get; set; }
+        public string Country { get; set; }
+        public Nullable<double> ElevationGain { get; set; }
     
         public virtual Users Users { get; set; }
     }

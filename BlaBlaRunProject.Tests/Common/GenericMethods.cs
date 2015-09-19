@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using BlaBlaRunProject.DataAccess.Abstract;
 using BlaBlaRunProject.Domain.Concrete;
+using System.Threading.Tasks;
 
 namespace BlaBlaRunProject.Tests.Common
 {
@@ -80,6 +81,40 @@ namespace BlaBlaRunProject.Tests.Common
                     lModels.Remove(item);
                 }
             });
+            repository.Setup(x => x.GetByIdAsync(Moq.It.IsAny<TKey>())).Returns((TKey i) => { return Task.FromResult(lModels.Find(x => x.Id.Equals(i))); });
+            repository.Setup(x => x.InsertAsync(Moq.It.IsAny<TModel>())).Returns((TModel y) =>
+            Task.Run(() =>
+            {
+                var item = lModels.OrderByDescending(x => x.Id).FirstOrDefault();
+                if (item != null)
+                {
+                    dynamic z = item.Id;
+                    y.Id = z + 1;
+                    lModels.Add(y);
+                }
+            })
+            );
+            repository.Setup(x => x.UpdateAsync(Moq.It.IsAny<TModel>())).Returns((TModel y) =>
+            Task.Run(() =>
+            {
+                var i = lModels.FindIndex(x => x.Id.Equals(y.Id));
+                if (i != -1)
+                {
+                    lModels[i] = y;
+                }
+            })
+            );
+            repository.Setup(x => x.DeleteAsync(Moq.It.IsAny<TModel>())).Returns((TModel y) =>
+            Task.Run(() =>
+            {
+                var item = lModels.Where(x => x.Id.Equals(y.Id)).FirstOrDefault();
+                if (item != null)
+                {
+                    lModels.Remove(item);
+                }
+            })
+            );
+
 
 
             return repository;

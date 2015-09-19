@@ -4,6 +4,7 @@ using BlaBlaRunProject.Domain.Concrete;
 using System.Threading.Tasks;
 using BlaBlaRunProject.Tests.Common;
 using BlaBlaRunProject.Controllers;
+using System.Data.Entity.Spatial;
 
 namespace BlaBlaRunProject.Tests.Controllers
 {
@@ -40,13 +41,7 @@ namespace BlaBlaRunProject.Tests.Controllers
         {
             await base.Put(GenericMethods.SetupWorkoutsList, EditEntity, TestEditEntity);
         }
-
-        [TestMethod]
-        [TestCategory("WorkoutsController")]
-        public async Task Patch()
-        {
-            await base.Patch(GenericMethods.SetupWorkoutsList, EditEntity, TestEditEntity);
-        }
+        
 
         [TestMethod]
         [TestCategory("WorkoutsController")]
@@ -66,26 +61,24 @@ namespace BlaBlaRunProject.Tests.Controllers
             Workouts oWorkouts = new Workouts()
             {
                 Id = IdParam,
-                //Company = "TestUsers"
+                StartLocation = DbGeography.FromText("POINT(-122.335197 47.646711)")
             };
             return oWorkouts;
 
         }
 
-        //public Delta<Workouts> EditEntity(Workouts oWorkouts)
-        //{
-        //    var oUserDelta = new Delta<Workouts>(typeof(Workouts));
-        //    oUserDelta.TrySetPropertyValue("Id", oUser.Id);
-        //    oUserDelta.TrySetPropertyValue("Company", "TestUsers");
-        //    return oUserDelta;
-        //}
+        public Workouts EditEntity(Workouts oWorkouts)
+        {
+            oWorkouts.StartLocation =  DbGeography.FromText("POINT(-122.335197 47.646711)");
+            return oWorkouts;
+        }
 
-        //public bool TestEditEntity(Workouts oWorkouts)
-        //{
-        //    bool bResult = oWorkouts.Company == "TestUsers";
-        //    return bResult;
+        public bool TestEditEntity(Workouts oWorkouts)
+        {
+            bool bResult = oWorkouts.StartLocation.Distance(DbGeography.FromText("POINT(-122.335197 47.646711)")) == 0;
+            return bResult;
 
-        //}
+        }
 
 
     }

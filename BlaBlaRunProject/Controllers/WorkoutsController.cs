@@ -79,7 +79,7 @@ namespace BlaBlaRunProject.Controllers
             //    }
             //}
 
-            await repository.InsertAsync(workouts);
+            await repository.UpdateAsync(workouts);
             return StatusCode(HttpStatusCode.NoContent);
         }
 
@@ -94,7 +94,7 @@ namespace BlaBlaRunProject.Controllers
 
             //db.WorkoutsSet.Add(workouts);
             //await db.SaveChangesAsync();
-            await repository.UpdateAsync(workouts);
+            await repository.InsertAsync(workouts);
 
             return CreatedAtRoute("DefaultApi", new { id = workouts.Id }, workouts);
         }
