@@ -11,6 +11,8 @@ namespace BlaBlaRunProject.App_Start
     using Ninject;
     using Ninject.Web.Common;
     using DataAccess.Abstract;
+    using System.Data.Entity;
+    using Domain.Concrete;
 
     public static class NinjectWebCommon 
     {
@@ -62,6 +64,7 @@ namespace BlaBlaRunProject.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind<DbContext>().To<EFDBContextContainer>();
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>();
         }        
     }

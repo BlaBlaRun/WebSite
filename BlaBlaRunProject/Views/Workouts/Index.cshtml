@@ -1,0 +1,100 @@
+﻿@model IEnumerable<BlaBlaRunProject.Domain.Concrete.Workouts>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AVGPace)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Circular)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Distance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaxNumberPeaople)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Region)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Country)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ElevationGain)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Users.Id)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartLocation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AVGPace)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Circular)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndLocation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Distance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaxNumberPeaople)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Region)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Country)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ElevationGain)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Users.Id)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

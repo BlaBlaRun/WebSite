@@ -11,7 +11,7 @@ using System.Linq;
 namespace BlaBlaRunProject.Tests.Controllers
 {
     [TestClass]
-    public class WorkoutsControllerTest: EntityControllerApiTest<long, Workouts, WorkoutsController>
+    public class WorkoutsControllerTest: EntityControllerApiTest<long, Workouts, WorkoutsApiController>
     {
 
         #region Mock

@@ -225,13 +225,14 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Base\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\Interfaces\BaseApiController.cs" />
+    <Compile Include="Controllers\Base\BaseApiController.cs" />
     <Compile Include="Controllers\Interfaces\IMVCController.cs" />
     <Compile Include="Controllers\Interfaces\IApiController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\PhoneNumber.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\WorkoutsApiController.cs" />
     <Compile Include="Controllers\WorkoutsController.cs" />
     <Compile Include="DAL\ApplicationDbInitializer.cs" />
     <Compile Include="DAL\EnumRoles.cs" />
@@ -329,10 +330,16 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Workout\ListOld.cshtml" />
+    <Content Include="Views\Workouts\ListOld.cshtml" />
+    <Content Include="Views\Workouts\Create.cshtml" />
+    <Content Include="Views\Workouts\Delete.cshtml" />
+    <Content Include="Views\Workouts\Details.cshtml" />
+    <Content Include="Views\Workouts\Edit.cshtml" />
+    <Content Include="Views\Workouts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

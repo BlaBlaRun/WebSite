@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "ListOld";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ListOld</h2>
+
+@section scripts
+{
+
+    <link rel="stylesheet" type="text/css" href="~/Content/DataTables/jquery.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/DataTables/jquery.dataTables.css">
+    <script type="text/javascript" language="javascript" src="~/Scripts/DataTables/jquery.dataTables.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Setup - add a text input to each footer cell
+            $('#table tfoot th').each(function () {
+                var title = $('#table thead th').eq($(this).index()).text();
+                $(this).html('<input type="text" placeholder="Search ' + title + '" />');
+            });
+
+            // DataTable
+            var table = $('#table').DataTable({
+                bProcessing: true,
+                ajax: '@Url.Action("GetWorkoutsDataJson", "Workouts")',
+                columns: [
+                    { "data": "Id" },
+                    { "data": "UsersId" },
+                    { "data": "StartLocation" },
+                    { "data": "StartDateTime" },
+                    { "data": "Circular" }
+                ]
+            });
+                        
+            // Apply the search
+            table.columns().every(function () {
+                var that = this;
+
+                $('input', this.footer()).on('keyup change', function () {
+                    if (that.search() !== this.value) {
+                        that
+                            .search(this.value)
+                            .draw();
+                    }
+                });
+            });
+        });
+
+    </script>
+}
+
+<div id="container">
+    <div id="demo">
+        <table id="table" class="display" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>UsersId</th>
+                    <th>StartLocation</th>
+                    <th>StartDateTime</th>
+                    <th>Circular</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>Id</th>
+                    <th>UsersId</th>
+                    <th>StartLocation</th>
+                    <th>StartDateTime</th>
+                    <th>Circular</th>
+                </tr>
+            </tfoot>        
+        </table>
+    </div>
+</div>
