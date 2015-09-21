@@ -23,6 +23,18 @@ namespace BlaBlaRunProject.Tests.Common
             return lWorkouts;
         }
 
+        internal static List<Users> SetupUsersList()
+        {
+            var oUser1 = new Users() { Id = 0 };
+            var oUser2 = new Users() { Id = 1 };
+            var oUser3 = new Users() { Id = 2 };
+            var oUser4 = Activator.CreateInstance(typeof(Users));
+
+            var lUsers = new List<Users>() { oUser1, oUser2, oUser3 };
+
+            return lUsers;
+        }
+
         public static Moq.Mock<IUnitOfWork> SetupUnitOfWork<TKey, TModel, TRepo>(Moq.Mock<TRepo> oRepository)
             where TModel : class, IIdentityKey<TKey>
             where TRepo : class, IRepository<TKey, TModel>

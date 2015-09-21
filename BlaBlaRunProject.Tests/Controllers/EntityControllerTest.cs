@@ -4,8 +4,8 @@ using BlaBlaRunProject.Tests.Common;
 using System.Web.Mvc;
 using System.Collections.Generic;
 using System.Linq;
-using BlaBlaRunProject.WebUI.Controllers;
 using BlaBlaRunProject.DataAccess.Abstract;
+using BlaBlaRunProject.WebUI.Controllers.Interfaces;
 
 namespace BlaBlaRunProject.Tests.Controllers
 {

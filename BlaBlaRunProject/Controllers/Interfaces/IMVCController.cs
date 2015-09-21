@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using BlaBlaRunProject.DataAccess.Abstract;
 
-namespace BlaBlaRunProject.WebUI.Controllers
+namespace BlaBlaRunProject.WebUI.Controllers.Interfaces
 {
     public interface IMVCController<TEntity, TIdentityType>
         where TEntity : class, IIdentityKey<TIdentityType>

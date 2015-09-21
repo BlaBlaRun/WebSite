@@ -231,6 +231,7 @@
     <Compile Include="Controllers\Interfaces\IApiController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PhoneNumber.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\WorkoutsController.cs" />
     <Compile Include="DAL\ApplicationDbInitializer.cs" />
     <Compile Include="DAL\EnumRoles.cs" />

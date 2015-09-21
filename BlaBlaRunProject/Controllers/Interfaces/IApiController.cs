@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using BlaBlaRunProject.DataAccess.Abstract;
 
-namespace BlaBlaRunProject.WebUI.Controllers
+namespace BlaBlaRunProject.WebUI.Controllers.Interfaces
 {
     public interface IApiController<TKey, TEntity>
         where TEntity : class, IIdentityKey<TKey>

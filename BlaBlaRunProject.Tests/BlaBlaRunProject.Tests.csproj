@@ -107,6 +107,7 @@
     <Compile Include="Common\GenericMethods.cs" />
     <Compile Include="Controllers\EntityControllerApiTest.cs" />
     <Compile Include="Controllers\EntityControllerTest.cs" />
+    <Compile Include="Controllers\UsersControllerTest.cs" />
     <Compile Include="Controllers\WorkoutsControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />

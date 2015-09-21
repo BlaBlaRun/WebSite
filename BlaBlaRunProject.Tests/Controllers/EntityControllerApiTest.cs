@@ -9,9 +9,9 @@ using BlaBlaRunProject.DataAccess.Abstract;
 using BlaBlaRunProject.Domain.Concrete;
 using BlaBlaRunProject.Tests.Common;
 using System.Net.Http;
-using BlaBlaRunProject.WebUI.Controllers;
 using System.Web.Http;
 using System.Threading.Tasks;
+using BlaBlaRunProject.WebUI.Controllers.Interfaces;
 
 namespace BlaBlaRunProject.Tests.Controllers
 {
@@ -225,7 +225,7 @@ namespace BlaBlaRunProject.Tests.Controllers
             //}
             dynamic oEntityLastOldId = oEntityLastOld.Id;
 
-            Assert.AreEqual(oEntityLastOldId + 1, oEntity.Id);
+            Assert.IsTrue(oEntity.Id.Equals(oEntityLastOldId + 1));
             Assert.AreEqual(iEntitiesCount + 1, oRepository.Entities.Count());
             Assert.IsTrue(TestEditEntity(oEntityNew));
         }

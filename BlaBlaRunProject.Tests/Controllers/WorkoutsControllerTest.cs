@@ -122,27 +122,32 @@ namespace BlaBlaRunProject.Tests.Controllers
         [TestCategory("Intergration.WorkoutsController")]
         public async Task AddAndDelete()
         {
-            PostDBUser();
+            await PostDBUser();
             await base.AddAndDelete(CreateValidatedEntity, TestEditEntity);
-            DeleteDBUser();
+            await DeleteDBUser();
 
         }
 
-        private void DeleteDBUser()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void PostDBUser()
-        {
-            throw new NotImplementedException();
-        }
 
         [TestMethod]
         [TestCategory("Intergration.WorkoutsController")]
         public async Task AddUpdateDeleted()
         {
+            await PostDBUser();
             await base.AddUpdateDeleted(CreateValidatedEntity, EditEntity, TestEditEntity);
+            await DeleteDBUser();
+        }
+
+        private async Task PostDBUser()
+        {
+            var oUsersControllerTest = new UsersControllerTest();
+            await oUsersControllerTest.PostDB();
+        }
+
+        private async Task DeleteDBUser()
+        {
+            var oUsersControllerTest = new UsersControllerTest();
+            await oUsersControllerTest.DeleteDB();
         }
 
         #endregion

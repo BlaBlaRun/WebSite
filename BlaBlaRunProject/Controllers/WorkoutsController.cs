@@ -10,9 +10,8 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using BlaBlaRunProject.Domain.Concrete;
-using BlaBlaRunProject.WebUI.Controllers;
 using BlaBlaRunProject.DataAccess.Abstract;
-using BlaBlaRunProject.Controllers.Interfaces;
+using BlaBlaRunProject.WebUI.Controllers.Interfaces;
 using Newtonsoft.Json;
 
 namespace BlaBlaRunProject.Controllers

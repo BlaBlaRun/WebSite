@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 
-namespace BlaBlaRunProject.Controllers.Interfaces
+namespace BlaBlaRunProject.WebUI.Controllers.Interfaces
 {
     public class BaseApiController<TKey, TEntity> : ApiController
         where TKey : struct, IComparable, IComparable<TKey>, IFormattable, IConvertible, IEquatable<TKey>
