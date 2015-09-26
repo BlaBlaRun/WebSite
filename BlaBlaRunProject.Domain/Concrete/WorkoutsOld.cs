@@ -12,7 +12,7 @@ namespace BlaBlaRunProject.Domain.Concrete
     using System;
     using System.Collections.Generic;
     
-    public partial class Workouts
+    public partial class WorkoutsOld
     {
         public long Id { get; set; }
         public long UsersId { get; set; }
@@ -27,7 +27,5 @@ namespace BlaBlaRunProject.Domain.Concrete
         public string Region { get; set; }
         public string Country { get; set; }
         public Nullable<double> ElevationGain { get; set; }
-    
-        public virtual Users Users { get; set; }
     }
 }

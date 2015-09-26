@@ -234,6 +234,7 @@
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\WorkoutsApiController.cs" />
     <Compile Include="Controllers\WorkoutsController.cs" />
+    <Compile Include="Controllers\WorkoutsOldsController.cs" />
     <Compile Include="DAL\ApplicationDbInitializer.cs" />
     <Compile Include="DAL\EnumRoles.cs" />
     <Compile Include="Global.asax.cs">
@@ -283,9 +284,11 @@
     <Content Include="Scripts\DataTables\jquery.dataTables.js" />
     <Content Include="Scripts\DataTables\jquery.dataTables.min.js" />
     <Content Include="Scripts\DataTables\jquery.js" />
+    <Content Include="Scripts\InitializeDataTables.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.11.3.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -336,6 +339,12 @@
     <Content Include="Views\Workouts\Details.cshtml" />
     <Content Include="Views\Workouts\Edit.cshtml" />
     <Content Include="Views\Workouts\Index.cshtml" />
+    <Content Include="Views\Workouts\IndexListOld.cshtml" />
+    <Content Include="Views\WorkoutsOlds\Create.cshtml" />
+    <Content Include="Views\WorkoutsOlds\Delete.cshtml" />
+    <Content Include="Views\WorkoutsOlds\Details.cshtml" />
+    <Content Include="Views\WorkoutsOlds\Edit.cshtml" />
+    <Content Include="Views\WorkoutsOlds\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

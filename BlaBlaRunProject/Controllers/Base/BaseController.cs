@@ -14,25 +14,23 @@ namespace BlaBlaRunProject.Controllers.Base
         where TKey : struct, IComparable, IComparable<TKey>, IFormattable, IConvertible, IEquatable<TKey>
         where TEntity : class, IIdentityKey<TKey>
     {
-        private IUnitOfWork unitOfWork;
-        private IRepository<TKey, TEntity> repository;
+        protected IUnitOfWork unitOfWork;
+        protected IRepository<TKey, TEntity> repository;
 
         public BaseController(IUnitOfWork uow)
         {
             unitOfWork = uow;
             repository = unitOfWork.Repository<TKey, TEntity>();
         }
-        
+
         // GET: TEntity
-        public async Task<ActionResult> Index()
+        protected async Task<ActionResult> Index()
         {
-            //var TEntitySet = repository.Entities.Include(w => w.Users);
-            var TEntitySet = repository.Entities;
-            return View(await TEntitySet.ToListAsync());
+            return View(await repository.EntitiesAsync);
         }
 
         // GET: TEntity/Details/5
-        public async Task<ActionResult> Details(TKey? id)
+        protected async Task<ActionResult> Details(TKey? id)
         {
             if (id == null)
             {
@@ -47,7 +45,7 @@ namespace BlaBlaRunProject.Controllers.Base
         }
 
         // GET: TEntity/Create
-        public ActionResult Create()
+        protected ActionResult Create()
         {
 
             //var usersRepository = unitOfWork.Repository<TKey, Users>();
@@ -60,7 +58,7 @@ namespace BlaBlaRunProject.Controllers.Base
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind] TEntity TEntity)
+        protected async Task<ActionResult> Create([Bind] TEntity TEntity)
         {
             if (ModelState.IsValid)
             {
@@ -74,7 +72,7 @@ namespace BlaBlaRunProject.Controllers.Base
         }
 
         // GET: TEntity/Edit/5
-        public async Task<ActionResult> Edit(TKey? id)
+        protected async Task<ActionResult> Edit(TKey? id)
         {
             if (id == null)
             {
@@ -95,7 +93,7 @@ namespace BlaBlaRunProject.Controllers.Base
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind] TEntity TEntity)
+        protected async Task<ActionResult> Edit([Bind] TEntity TEntity)
         {
             if (ModelState.IsValid)
             {
@@ -108,7 +106,7 @@ namespace BlaBlaRunProject.Controllers.Base
         }
 
         // GET: TEntity/Delete/5
-        public async Task<ActionResult> Delete(TKey? id)
+        protected async Task<ActionResult> Delete(TKey? id)
         {
             if (id == null)
             {
@@ -125,7 +123,7 @@ namespace BlaBlaRunProject.Controllers.Base
         // POST: TEntity/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(TKey id)
+        protected async Task<ActionResult> DeleteConfirmed(TKey id)
         {
             TEntity TEntity = await repository.GetByIdAsync(id);
             await repository.DeleteAsync(TEntity);

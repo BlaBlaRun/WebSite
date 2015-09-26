@@ -30,6 +30,13 @@ namespace BlaBlaRunProject.Controllers
             return View(await workoutsSet.ToListAsync());
         }
 
+        // GET: Workouts
+        public async Task<ActionResult> IndexListOld()
+        {
+            var workoutsSet = repository.Entities.Include(w => w.Users);
+            return View(await workoutsSet.ToListAsync());
+        }
+
         // GET: Workouts/Details/5
         public async Task<ActionResult> Details(long? id)
         {

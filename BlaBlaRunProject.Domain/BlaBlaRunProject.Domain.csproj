@@ -74,8 +74,12 @@
     <Compile Include="Concrete\Workouts.cs">
       <DependentUpon>EFDBContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Concrete\WorkoutsOld.cs">
+      <DependentUpon>EFDBContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\UsersDTO.cs" />
     <Compile Include="Entities\WorkoutDTO.cs" />
+    <Compile Include="Entities\WorkoutOldDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
