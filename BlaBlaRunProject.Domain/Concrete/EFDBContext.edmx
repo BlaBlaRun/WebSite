@@ -46,7 +46,7 @@
     <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UsersId" Type="bigint" Nullable="false" />
     <Property Name="StartDateTime" Type="datetime" Nullable="false" />
-    <Property Name="StartLocation" Type="geography" Nullable="false" SRID="4326" />
+    <Property Name="StartLocation" Type="geography" Nullable="true" SRID="4326" />
     <Property Name="AVGPace" Type="time" Nullable="true" />
     <Property Name="Circular" Type="bit" Nullable="false" />
     <Property Name="EndLocation" Type="geography" Nullable="true" SRID="4326" />
@@ -128,7 +128,7 @@
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UsersId" Type="Int64" Nullable="false" />
           <Property Name="StartDateTime" Type="DateTime" Nullable="false" />
-          <Property Name="StartLocation" Type="Geography" Nullable="false" />
+          <Property Name="StartLocation" Type="Geography" Nullable="true" />
           <Property Name="AVGPace" Type="Time" Nullable="true" />
           <Property Name="Circular" Type="Boolean" Nullable="false" />
           <Property Name="EndLocation" Type="Geography" Nullable="true" />

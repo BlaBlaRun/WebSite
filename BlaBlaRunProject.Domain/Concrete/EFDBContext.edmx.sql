@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 09/26/2015 17:48:26
+-- Date Created: 10/03/2015 21:34:44
 -- Generated from EDMX file: C:\Projects\BlaBlaRunProject\BlaBlaRunProject.Domain\Concrete\EFDBContext.edmx
 -- --------------------------------------------------
 
@@ -69,7 +69,7 @@ CREATE TABLE [dbo].[WorkoutsOldSet] (
     [Id] bigint IDENTITY(1,1) NOT NULL,
     [UsersId] bigint  NOT NULL,
     [StartDateTime] datetime  NOT NULL,
-    [StartLocation] geography  NOT NULL,
+    [StartLocation] geography  NULL,
     [AVGPace] time  NULL,
     [Circular] bit  NOT NULL,
     [EndLocation] geography  NULL,

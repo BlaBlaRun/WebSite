@@ -109,6 +109,7 @@
     <Compile Include="Controllers\EntityControllerTest.cs" />
     <Compile Include="Controllers\UsersControllerTest.cs" />
     <Compile Include="Controllers\WorkoutsControllerTest.cs" />
+    <Compile Include="Controllers\WorkoutsOldsControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>
@@ -122,6 +123,10 @@
     <ProjectReference Include="..\BlaBlaRunProject.DataAccess\BlaBlaRunProject.DataAccess.csproj">
       <Project>{3f63e4d4-c2c8-4c0e-b7e2-e03fa294ce87}</Project>
       <Name>BlaBlaRunProject.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BlaBlaRunProject.DataInitializer\BlaBlaRunProject.DataPopulator.csproj">
+      <Project>{d0a4b21b-8f0c-4c97-a605-ec8021e0584e}</Project>
+      <Name>BlaBlaRunProject.DataPopulator</Name>
     </ProjectReference>
     <ProjectReference Include="..\BlaBlaRunProject.Domain\BlaBlaRunProject.Domain.csproj">
       <Project>{b8523d81-8b9f-4309-be8e-338710b44d8c}</Project>
