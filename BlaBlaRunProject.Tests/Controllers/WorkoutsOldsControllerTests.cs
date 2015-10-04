@@ -24,10 +24,9 @@ namespace BlaBlaRunProject.Controllers.Tests
 
             foreach (var item in list)
             {
-                UnitOfWork oUnitOfWork = new UnitOfWork(new EFDBContextContainer());
-
-                WorkoutsOldsController controller = new WorkoutsOldsController(oUnitOfWork);
-                controller.Create(item);
+                var oUnitOfWork = new UnitOfWork(new EFDBContextContainer());
+                IRepository<long, WorkoutsOld> oRepository = oUnitOfWork.Repository<long, WorkoutsOld>();
+                oRepository.Insert(item);
                 //Thread.Sleep(1000);
 
             }

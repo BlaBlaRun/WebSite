@@ -46,8 +46,8 @@ namespace BlaBlaRunProject.DataPopulator
 
         private static short? RandomMaxNumberPeople(Random rnd)
         {
-            int r = rnd.Next(5);
-            return (short) r;
+            int r = rnd.Next(3);
+            return (short) (r + 2);
         }
 
         private static double? RandomElevation(Random rnd)
