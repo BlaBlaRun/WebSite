@@ -10,10 +10,11 @@ using System.Web.Mvc;
 using BlaBlaRunProject.Domain.Concrete;
 using BlaBlaRunProject.DataAccess.Abstract;
 using BlaBlaRunProject.Controllers.Base;
+using BlaBlaRunProject.WebUI.Controllers.Interfaces;
 
 namespace BlaBlaRunProject.Controllers
 {
-    public class WorkoutsOldsController : BaseController<long, WorkoutsOld>
+    public class WorkoutsOldsController : BaseController<long, WorkoutsOld>, IMVCController<long, WorkoutsOld>
     {
         public WorkoutsOldsController(IUnitOfWork uow) : base(uow)
         {

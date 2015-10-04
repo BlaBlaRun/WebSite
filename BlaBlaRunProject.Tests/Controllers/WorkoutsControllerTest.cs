@@ -16,6 +16,7 @@ namespace BlaBlaRunProject.Tests.Controllers
 
         #region Mock
         [TestMethod]
+        [Ignore]
         [TestCategory("WorkoutsController")]
         public void Get()
         {
@@ -23,6 +24,7 @@ namespace BlaBlaRunProject.Tests.Controllers
         }
 
         [TestMethod]
+        [Ignore]
         [TestCategory("WorkoutsController")]
         public void GetById()
         {
@@ -31,6 +33,7 @@ namespace BlaBlaRunProject.Tests.Controllers
         }
 
         [TestMethod]
+        [Ignore]
         [TestCategory("WorkoutsController")]
         public async Task Post()
         {
@@ -38,6 +41,7 @@ namespace BlaBlaRunProject.Tests.Controllers
         }
 
         [TestMethod]
+        [Ignore]
         [TestCategory("WorkoutsController")]
         public async Task Put()
         {
@@ -46,6 +50,7 @@ namespace BlaBlaRunProject.Tests.Controllers
         
 
         [TestMethod]
+        [Ignore]
         [TestCategory("WorkoutsController")]
         public async Task Delete()
         {

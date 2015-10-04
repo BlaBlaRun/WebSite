@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<OrderedTest name="OrderedTestWorkoutsOlds" storage="c:\projects\blablarunproject\blablarunproject.tests\controllers\ordered\orderedtestworkoutsolds.orderedtest" id="53de8016-c837-434f-aa02-9ac5ced839fd" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestLinks>
+    <TestLink id="cebd5826-0b91-c8f3-9d84-653d8a9fef54" name="IndexWithDB" storage="..\..\bin\debug\blablarunproject.test.tests.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="684df2f5-9cbe-d307-cec2-29e29a878b89" name="CreateWithDB" storage="..\..\bin\debug\blablarunproject.test.tests.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="d109cdc8-1217-90ea-fca9-0674151a93e9" name="EditWithDB" storage="..\..\bin\debug\blablarunproject.test.tests.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="cebd5826-0b91-c8f3-9d84-653d8a9fef54" name="IndexWithDB" storage="..\..\bin\debug\blablarunproject.test.tests.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <TestLink id="8fe25741-655a-54b2-5a68-ba733b7a45d1" name="DeleteWithDB" storage="..\..\bin\debug\blablarunproject.test.tests.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  </TestLinks>
+</OrderedTest>

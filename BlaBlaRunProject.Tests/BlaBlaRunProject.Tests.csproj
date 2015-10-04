@@ -117,6 +117,12 @@
     <Content Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Controllers\Ordered\OrderedTestWorkout.orderedtest">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Controllers\Ordered\OrderedTestWorkoutsOlds.orderedtest">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
