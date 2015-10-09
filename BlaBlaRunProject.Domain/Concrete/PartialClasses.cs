@@ -19,8 +19,7 @@ namespace BlaBlaRunProject.Domain.Concrete
     [MetadataType(typeof(BlaBlaRunProject.Domain.Entities.WorkoutOldDTO))]
     public partial class WorkoutsOld : IIdentityKey<long>
     {
-
-
+        
     }
 
     //[MetadataType(typeof(BlaBlaRunProject.Domain.Entities.UsersDTO))]
