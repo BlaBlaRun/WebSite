@@ -432,5 +432,5 @@ textarea {
     overflow: auto; /* so the size of the wrapper is alway the size of the longest content */
 }
 
-table.dataTable tr.odd { background-color: #0CA9FA; }
+table.dataTable tr.odd { background-color: #ECF7FF; }
 table.dataTable tr.even { background-color: white; }

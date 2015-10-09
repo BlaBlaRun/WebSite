@@ -340,7 +340,6 @@
     <Content Include="Views\Workouts\Edit.cshtml" />
     <Content Include="Views\Workouts\Index.cshtml" />
     <Content Include="Views\Workouts\IndexListOld.cshtml" />
-    <Content Include="Views\WorkoutsOlds\Create.cshtml" />
     <Content Include="Views\WorkoutsOlds\Delete.cshtml" />
     <Content Include="Views\WorkoutsOlds\Details.cshtml" />
     <Content Include="Views\WorkoutsOlds\Edit.cshtml" />
