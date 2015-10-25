@@ -29,6 +29,17 @@ namespace BlaBlaRunProject.Controllers.Base
             return View(await repository.EntitiesAsync);
         }
 
+
+        // GET: TEntity
+        protected async Task<ActionResult> Index(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
+        {
+            var list = await repository.EntitiesAsync;
+            var view = await Task.Run(() => list.Where(predicate));
+
+            return View(view);
+        }
+
+
         // GET: TEntity/Details/5
         protected async Task<ActionResult> Details(TKey? id)
         {

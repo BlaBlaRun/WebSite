@@ -22,7 +22,7 @@ namespace BlaBlaRunProject.Controllers
         // GET: WorkoutsOlds
         public async Task<ActionResult> Index()
         {
-            return await base.Index();
+            return await base.Index(x => x.StartDateTime >= DateTime.UtcNow);
         }
 
         // GET: WorkoutsOlds/Details/5
