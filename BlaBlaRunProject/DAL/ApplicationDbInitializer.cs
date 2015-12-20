@@ -6,12 +6,25 @@ using System.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using BlaBlaRunProject.WebUI.Models;
+using BlaBlaRunProject.Domain.Concrete;
+using BlaBlaRunProject.DataAccess.Abstract;
+using System.Web.Mvc;
 
 namespace BlaBlaRunProject.DAL
 {
     public class ApplicationDbInitializer
        : DropCreateDatabaseIfModelChanges<ApplicationDbContext>
     {
+
+        private IUnitOfWork unitOfWork = DependencyResolver.Current.GetService<IUnitOfWork>();
+        protected IRepository<long, Users> repository;
+
+
+        public ApplicationDbInitializer()
+        {
+            repository = unitOfWork.Repository<long, Users>();
+        }
+
         protected override void Seed(ApplicationDbContext context)
         {
             InitializeIdentityForEF(context);
@@ -19,7 +32,7 @@ namespace BlaBlaRunProject.DAL
         }
 
         //Create User=Admin@Admin.com with password=Admin@123456 in the Admin role        
-        public static void InitializeIdentityForEF(ApplicationDbContext db)
+        public void InitializeIdentityForEF(ApplicationDbContext db)
         {
             var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
             var RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
@@ -30,7 +43,7 @@ namespace BlaBlaRunProject.DAL
             CreateUserAdmin(UserManager);
         }
 
-        private static void CreateUserAdmin(UserManager<ApplicationUser> UserManager)
+        private void CreateUserAdmin(UserManager<ApplicationUser> UserManager)
         {
             //Create User=Admin with password=S@tl1nk2014
             string name = "blablarunnow@gmail.com";
@@ -46,6 +59,11 @@ namespace BlaBlaRunProject.DAL
             {
                 var result = UserManager.AddToRole(user.Id, EnumRoles.Admin.ToString());
             }
+
+            var userBBR = new Users();
+            userBBR.AspNetUserId = new Guid(user.Id);
+
+            repository.Insert(userBBR);
         }
 
         private static void CreateRoles(RoleManager<IdentityRole> RoleManager)
