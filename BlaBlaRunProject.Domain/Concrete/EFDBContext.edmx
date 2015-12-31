@@ -38,6 +38,7 @@
     </Key>
     <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="AspNetUserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="WorkoutsOldSet">
     <Key>
@@ -108,6 +109,7 @@
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Workouts" Relationship="EFDBContext.WorkoutsUsers" FromRole="Users" ToRole="Workouts" />
           <Property Name="AspNetUserId" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" />
         </EntityType>
         <Association Name="WorkoutsUsers">
           <End Type="EFDBContext.Workouts" Role="Workouts" Multiplicity="*" />
@@ -169,6 +171,7 @@
         <MappingFragment StoreEntitySet="UsersSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="AspNetUserId" ColumnName="AspNetUserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

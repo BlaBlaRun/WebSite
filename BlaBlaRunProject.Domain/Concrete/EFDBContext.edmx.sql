@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/03/2015 21:34:44
+-- Date Created: 12/31/2015 18:39:43
 -- Generated from EDMX file: C:\Projects\BlaBlaRunProject\BlaBlaRunProject.Domain\Concrete\EFDBContext.edmx
 -- --------------------------------------------------
 
@@ -60,7 +60,8 @@ GO
 -- Creating table 'UsersSet'
 CREATE TABLE [dbo].[UsersSet] (
     [Id] bigint IDENTITY(1,1) NOT NULL,
-    [AspNetUserId] uniqueidentifier  NOT NULL
+    [AspNetUserId] uniqueidentifier  NOT NULL,
+    [UserName] nvarchar(max)  NOT NULL
 );
 GO
 

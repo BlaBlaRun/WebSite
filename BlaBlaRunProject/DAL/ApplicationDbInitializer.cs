@@ -13,7 +13,7 @@ using System.Web.Mvc;
 namespace BlaBlaRunProject.DAL
 {
     public class ApplicationDbInitializer
-       : DropCreateDatabaseIfModelChanges<ApplicationDbContext>
+       : CreateDatabaseIfNotExists<ApplicationDbContext>
     {
 
         private IUnitOfWork unitOfWork = DependencyResolver.Current.GetService<IUnitOfWork>();
@@ -62,6 +62,7 @@ namespace BlaBlaRunProject.DAL
 
             var userBBR = new Users();
             userBBR.AspNetUserId = new Guid(user.Id);
+            userBBR.UserName = name;
 
             repository.Insert(userBBR);
         }

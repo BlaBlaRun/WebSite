@@ -10,6 +10,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using BlaBlaRunProject.WebUI.Models;
 using BlaBlaRunProject.DAL;
+using BlaBlaRunProject.Controllers;
+using BlaBlaRunProject.DataAccess.Abstract;
 
 namespace BlaBlaRunProject.WebUI.Controllers
 {
@@ -19,9 +21,13 @@ namespace BlaBlaRunProject.WebUI.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
-        public AccountController()
+        private IUnitOfWork unitOfWork { get; set; }
+
+        public AccountController(IUnitOfWork uow)
         {
+            unitOfWork = uow;
         }
+
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
@@ -181,8 +187,30 @@ namespace BlaBlaRunProject.WebUI.Controllers
 
                     return RedirectToAction("Index", "Home");
                 }
+
+                var createdUser = await UserManager.FindByNameAsync(model.Email);
+                if (createdUser == null)
+                {
+                    this.ModelState.AddModelError("", "The user does not exist.");
+                }
+
+                Domain.Concrete.Users oUser = new Domain.Concrete.Users();
+                oUser.AspNetUserId = new Guid(createdUser.Id);
+                oUser.UserName = model.Email;
+
+                UsersController oUsersController = new UsersController(unitOfWork);
+                var r = await oUsersController.Post(oUser);
+                if (r == null)
+                {
+                    this.ModelState.AddModelError("", "The user could not be created.");
+                }
+
+
                 AddErrors(result);
+
             }
+
+
 
             // If we got this far, something failed, redisplay form
             return View(model);

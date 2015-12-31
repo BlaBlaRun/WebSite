@@ -22,6 +22,7 @@ namespace BlaBlaRunProject.Domain.Concrete
     
         public long Id { get; set; }
         public System.Guid AspNetUserId { get; set; }
+        public string UserName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Workouts> Workouts { get; set; }
