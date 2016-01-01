@@ -178,33 +178,34 @@ namespace BlaBlaRunProject.WebUI.Controllers
                 {
                     var rolresult = UserManager.AddToRole(user.Id, EnumRoles.Normal.ToString());
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
+                    var createdUser = await UserManager.FindByNameAsync(model.Email);
+                    if (createdUser == null)
+                    {
+                        this.ModelState.AddModelError("", "The user does not exist.");
+                        return View();
+                    }
+
+                    Domain.Concrete.Users oUser = new Domain.Concrete.Users();
+                    oUser.AspNetUserId = new Guid(createdUser.Id);
+                    oUser.UserName = model.Email;
+
+                    UsersController oUsersController = new UsersController(unitOfWork);
+                    var r = await oUsersController.Post(oUser);
+                    if (r == null)
+                    {
+                        this.ModelState.AddModelError("", "The user could not be created.");
+                        return View();
+                    }
+                    
                     return RedirectToAction("Index", "Home");
                 }
-
-                var createdUser = await UserManager.FindByNameAsync(model.Email);
-                if (createdUser == null)
-                {
-                    this.ModelState.AddModelError("", "The user does not exist.");
-                }
-
-                Domain.Concrete.Users oUser = new Domain.Concrete.Users();
-                oUser.AspNetUserId = new Guid(createdUser.Id);
-                oUser.UserName = model.Email;
-
-                UsersController oUsersController = new UsersController(unitOfWork);
-                var r = await oUsersController.Post(oUser);
-                if (r == null)
-                {
-                    this.ModelState.AddModelError("", "The user could not be created.");
-                }
-
 
                 AddErrors(result);
 
