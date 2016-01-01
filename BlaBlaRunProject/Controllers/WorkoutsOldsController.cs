@@ -14,6 +14,7 @@ using BlaBlaRunProject.WebUI.Controllers.Interfaces;
 
 namespace BlaBlaRunProject.Controllers
 {
+    [AllowAnonymous]
     public class WorkoutsOldsController : BaseController<long, WorkoutsOld>, IMVCController<long, WorkoutsOld>
     {
         public WorkoutsOldsController(IUnitOfWork uow) : base(uow)
