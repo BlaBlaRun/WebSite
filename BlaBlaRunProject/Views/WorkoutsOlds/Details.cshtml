@@ -32,7 +32,10 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.StartLocation)
+            <a href='@Url.Action("Register", "Account")'>
+                @*style="text-align:center; display:block;" >*@
+                <img src='@Url.Content("~/Content/Images/OSMImage.png")' />
+            </a>                    
         </dd>
 
         <dt>
@@ -43,21 +46,21 @@
             @Html.DisplayFor(model => model.AVGPace)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.Circular)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Circular)
-        </dd>
+        </dd>*@
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.EndLocation)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.EndLocation)
-        </dd>
+        </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.Distance)

@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<BlaBlaRunProject.Domain.Concrete.WorkoutsOld>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Entrenos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Entrenos</h2>
 
 <div class="table-responsive">
     <table id="table" class="compact nowrap" cellspacing="0">
@@ -41,7 +41,9 @@
                         @item.StartDateTime.ToString("yyyy/MM/dd HH:mm:ss")
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.StartLocation)
+                        <a href='@Url.Action("Register", "Account")'> @*style="text-align:center; display:block;" >*@
+                            <img src='@Url.Content("~/Content/Images/OSMImage.png")' />
+                        </a>                        
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.AVGPace)

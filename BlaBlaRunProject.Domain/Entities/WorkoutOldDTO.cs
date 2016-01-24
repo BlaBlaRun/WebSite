@@ -15,7 +15,7 @@ namespace BlaBlaRunProject.Domain.Entities
         [Display(Name = "Fecha del Evento")]
         public System.DateTime StartDateTime { get; set; }
 
-        [Display(Name = "Lugar del Comienzo")]
+        [Display(Name = "Comienzo")]
         public System.Data.Entity.Spatial.DbGeography StartLocation { get; set; }
 
         [Display(Name = "Ritmo Medio")]
@@ -24,7 +24,7 @@ namespace BlaBlaRunProject.Domain.Entities
         [Display(Name = "Circular?")]
         public bool Circular { get; set; }
 
-        [Display(Name = "Lugar de Finalización")]
+        [Display(Name = "Finalización")]
         public System.Data.Entity.Spatial.DbGeography EndLocation { get; set; }
 
         [Display(Name = "Distancia")]

@@ -266,6 +266,7 @@
     <Content Include="Content\Images\DataTables\sort_desc.png" />
     <Content Include="Content\Images\DataTables\sort_desc_disabled.png" />
     <Content Include="Content\Images\iStock_000012873107Medium.jpg" />
+    <Content Include="Content\Images\OSMImage.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
