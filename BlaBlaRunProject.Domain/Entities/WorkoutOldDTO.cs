@@ -12,7 +12,7 @@ namespace BlaBlaRunProject.Domain.Entities
 
         public long Id { get; set; }
         public long UsersId { get; set; }
-        [Display(Name = "Fecha del Evento")]
+        [Display(Name = "Fecha")]
         public System.DateTime StartDateTime { get; set; }
 
         [Display(Name = "Comienzo")]
@@ -33,6 +33,8 @@ namespace BlaBlaRunProject.Domain.Entities
         [Display(Name = "Personas")]
         public Nullable<short> MaxNumberPeople { get; set; }
 
+        [Display(Name = "Barrio")]
+        public string Zone { get; set; }
         [Display(Name = "Ciudad")]
         public string City { get; set; }
         [Display(Name = "Provincia")]

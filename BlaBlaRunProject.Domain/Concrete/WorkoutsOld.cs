@@ -23,6 +23,7 @@ namespace BlaBlaRunProject.Domain.Concrete
         public System.Data.Entity.Spatial.DbGeography EndLocation { get; set; }
         public Nullable<double> Distance { get; set; }
         public Nullable<short> MaxNumberPeople { get; set; }
+        public string Zone { get; set; }
         public string City { get; set; }
         public string Region { get; set; }
         public string Country { get; set; }

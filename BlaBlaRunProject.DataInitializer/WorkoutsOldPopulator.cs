@@ -94,12 +94,250 @@ namespace BlaBlaRunProject.DataPopulator
             int r = rnd.Next(citiesList.Length);
             string city = (string)citiesList[r];
 
-            
+            string zone = string.Empty;
+            if(city == "Madrid")
+            {
+                zone = RandomZoneMadrid(rnd);
+            }
+            else
+            {
+                if(city == "Barcelona")
+                {
+                    zone = RandomZoneBarcelona(rnd);
+                }
+
+            }
+
+            oWorkoutsOld.Zone = zone.ToUpper();
             oWorkoutsOld.City = city;
             oWorkoutsOld.Region = city;
             oWorkoutsOld.Country = "Spain";
 
         }
+
+
+        private static string RandomZoneMadrid(Random rnd)
+        {
+            string[] zoneList = new string[] { "ACACIAS",
+            "ATOCHA",
+            "CHOPERA",
+            "DELICIAS",
+            "IMPERIAL",
+            "LEGAZPI",
+            "PALOS DE MOGUER",
+            "AEROPUERTO",
+            "ALAMEDA DE OSUNA",
+            "CASCO H.BARAJAS",
+            "CORRALEJOS",
+            "TIMON",
+            "ABRANTES",
+            "BUENAVISTA",
+            "COMILLAS",
+            "OPAÑEL",
+            "PUERTA BONITA",
+            "SAN ISIDRO",
+            "VISTA ALEGRE",
+            "CORTES",
+            "EMBAJADORES",
+            "JUSTICIA",
+            "PALACIO",
+            "SOL",
+            "UNIVERSIDAD",
+            "CASTILLA",
+            "CIUDAD JARDIN",
+            "EL VISO",
+            "HISPANOAMERICA",
+            "NUEVA ESPAÑA",
+            "PROSPERIDAD",
+            "ALMAGRO",
+            "ARAPILES",
+            "GAZTAMBIDE",
+            "RIOS ROSAS",
+            "TRAFALGAR",
+            "VALLEHERMOSO",
+            "ATALAYA",
+            "COLINA",
+            "CONCEPCION",
+            "COSTILLARES",
+            "PUEBLO NUEVO",
+            "QUINTANA",
+            "SAN JUAN BAUTISTA",
+            "SAN PASCUAL",
+            "VENTAS",
+            "EL GOLOSO",
+            "EL PARDO",
+            "EL PILAR",
+            "FUENTELARREINA",
+            "LA PAZ",
+            "MIRASIERRA",
+            "PEÑA GRANDE",
+            "VALVERDE",
+            "APOSTOL SANTIAGO",
+            "CANILLAS",
+            "PALOMAS",
+            "PINAR DEL REY",
+            "PIOVERA",
+            "VALDEFUENTES",
+            "ALUCHE",
+            "CAMPAMENTO",
+            "CUATRO VIENTOS",
+            "LAS AGUILAS",
+            "LOS CARMENES",
+            "LUCERO",
+            "PUERTA DEL ANGEL",
+            "ARAVACA",
+            "ARGUELLES",
+            "CASA DE CAMPO",
+            "CIUDAD UNIVERSITARIAEL PLANTIO          ",
+            "VALDEMARIN",
+            "VALDEZARZA",
+            "FONTARRON",
+            "HORCAJO",
+            "MARROQUINA",
+            "MEDIA LEGUA",
+            "PAVONES",
+            "VINATEROS",
+            "ENTREVIAS",
+            "NUMANCIA",
+            "PALOMERAS BAJAS",
+            "PALOMERAS SURESTE",
+            "PORTAZGO",
+            "SAN DIEGO",
+            "ADELFAS",
+            "ESTRELLA",
+            "IBIZA",
+            "LOS JERONIMOS",
+            "NIÑO JESUS",
+            "PACIFICO",
+            "CASTELLANA",
+            "FUENTE DEL BERRO",
+            "GOYA",
+            "GUINDALERA",
+            "LISTA",
+            "RECOLETOS",
+            "AMPOSTA",
+            "ARCOS",
+            "CANILLEJAS",
+            "EL SALVADOR",
+            "HELLIN",
+            "REJAS",
+            "ROSAS",
+            "SIMANCAS",
+            "ALMENARA",
+            "BELLAS VISTAS",
+            "BERRUGUETE",
+            "CASTILLEJOS",
+            "CUATRO CAMINOS",
+            "VALDEACEDERAS",
+            "ALMENDRALES",
+            "MOSCARDO",
+            "ORCASITAS",
+            "ORCASUR",
+            "PRADOLONGO",
+            "SAN FERMIN",
+            "ZOFIO",
+            "AMBROZ",
+            "CASCO H.VICALVARO",
+            "CASCO H.VALLECAS",
+            "SANTA EUGENIA",
+            "BUTARQUE",
+            "LOS ANGELES",
+            "LOS ROSALES",
+            "SAN ANDRES",
+            "SAN CRISTOBAL"
+             };
+
+
+            int r = rnd.Next(zoneList.Length);
+            string zone = (string)zoneList[r];
+            return zone;
+        }
+
+
+        private static string RandomZoneBarcelona(Random rnd)
+        {
+            string[] zoneList = new string[] { "el Raval",
+            "el Barri Gòtic",
+            "la Barceloneta",
+            "Sant Pere, Santa Caterina i la Ribera",
+            "el Fort Pienc",
+            "la Sagrada Família",
+            "la Dreta de l Eixample",
+            "l Antiga Esquerra de l Eixample",
+            "la Nova Esquerra de l Eixample",
+            "Sant Antoni",
+            "el Poble Sec-AEI Parc Montjuïc",
+            "la Marina del Prat Vermell-AEI Zona Franca",
+            "la Marina de Port",
+            "la Font de la Guatlla",
+            "Hostafrancs",
+            "la Bordeta",
+            "Sants-Badal",
+            "Sants",
+            "les Corts",
+            "la Maternitat i Sant Ramon",
+            "Pedralbes",
+            "Vallvidrera, el Tibidabo i les Planes",
+            "Sarrià",
+            "les Tres Torres",
+            "Sant Gervasi-la Bonanova",
+            "Sant Gervasi-Galvany",
+            "el Putxet i el Farró",
+            "Vallcarca i els Penitents",
+            "el Coll",
+            "la Salut",
+            "la Vila de Gràcia",
+            "el Camp d en Grassot i Gràcia Nova",
+            "el Baix Guinardó",
+            "Can Baró",
+            "el Guinardó",
+            "la Font d en Fargues",
+            "el Carmel",
+            "la Teixonera",
+            "Sant Genís dels Agudells (1)",
+            "Montbau (1)",
+            "la Vall d Hebron",
+            "la Clota",
+            "Horta",
+            "Vilapicina i la Torre Llobeta",
+            "Porta",
+            "el Turó de la Peira (2)",
+            "Can Peguera (2)",
+            "la Guineueta",
+            "Canyelles (3)",
+            "les Roquetes (3)",
+            "Verdun",
+            "la Prosperitat",
+            "la Trinitat Nova",
+            "Torre Baró (4)",
+            "Ciutat Meridiana (4)",
+            "Vallbona (4)",
+            "la Trinitat Vella",
+            "Baró de Viver",
+            "el Bon Pastor",
+            "Sant Andreu",
+            "la Sagrera",
+            "el Congrés i els Indians",
+            "Navas",
+            "el Camp de l Arpa del Clot",
+            "el Clot",
+            "el Parc i la Llacuna del Poblenou",
+            "la Vila Olímpica del Poblenou",
+            "el Poblenou",
+            "Diagonal Mar i el Front Marítim del Poblenou",
+            "el Besòs i el Maresme",
+            "Provençals del Poblenou",
+            "Sant Martí de Provençals",
+            "la Verneda i la Pau"
+             };
+
+
+            int r = rnd.Next(zoneList.Length);
+            string zone = (string)zoneList[r];
+            return zone;
+        }
+
+        
 
         private static void RandomLocation(WorkoutsOld oWorkoutsOld, Random rnd)
         {

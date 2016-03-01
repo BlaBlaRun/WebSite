@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 12/31/2015 18:39:43
+-- Date Created: 03/01/2016 13:58:06
 -- Generated from EDMX file: C:\Projects\BlaBlaRunProject\BlaBlaRunProject.Domain\Concrete\EFDBContext.edmx
 -- --------------------------------------------------
 
@@ -44,13 +44,14 @@ CREATE TABLE [dbo].[WorkoutsSet] (
     [Id] bigint IDENTITY(1,1) NOT NULL,
     [UsersId] bigint  NOT NULL,
     [StartDateTime] datetime  NOT NULL,
-    [StartLocation] geography  NOT NULL,
+    [StartLocation] geography  NULL,
     [AVGPace] time  NULL,
     [Circular] bit  NOT NULL,
     [EndLocation] geography  NULL,
     [Distance] float  NULL,
     [MaxNumberPeople] smallint  NULL,
-    [City] nvarchar(max)  NULL,
+    [Zone] nvarchar(max)  NOT NULL,
+    [City] nvarchar(max)  NOT NULL,
     [Region] nvarchar(max)  NULL,
     [Country] nvarchar(max)  NULL,
     [ElevationGain] float  NULL
@@ -76,7 +77,8 @@ CREATE TABLE [dbo].[WorkoutsOldSet] (
     [EndLocation] geography  NULL,
     [Distance] float  NULL,
     [MaxNumberPeople] smallint  NULL,
-    [City] nvarchar(max)  NULL,
+    [Zone] nvarchar(max)  NOT NULL,
+    [City] nvarchar(max)  NOT NULL,
     [Region] nvarchar(max)  NULL,
     [Country] nvarchar(max)  NULL,
     [ElevationGain] float  NULL

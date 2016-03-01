@@ -21,13 +21,14 @@
     <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UsersId" Type="bigint" Nullable="false" />
     <Property Name="StartDateTime" Type="datetime" Nullable="false" />
-    <Property Name="StartLocation" Type="geography" Nullable="false" SRID="4326" />
+    <Property Name="StartLocation" Type="geography" Nullable="true" SRID="4326" />
     <Property Name="AVGPace" Type="time" Nullable="true" />
     <Property Name="Circular" Type="bit" Nullable="false" />
     <Property Name="EndLocation" Type="geography" Nullable="true" SRID="4326" />
     <Property Name="Distance" Type="float" Nullable="true" />
     <Property Name="MaxNumberPeople" Type="smallint" Nullable="true" />
-    <Property Name="City" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Zone" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="City" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Region" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Country" Type="nvarchar(max)" Nullable="true" />
     <Property Name="ElevationGain" Type="float" Nullable="true" />
@@ -53,7 +54,8 @@
     <Property Name="EndLocation" Type="geography" Nullable="true" SRID="4326" />
     <Property Name="Distance" Type="float" Nullable="true" />
     <Property Name="MaxNumberPeople" Type="smallint" Nullable="true" />
-    <Property Name="City" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Zone" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="City" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Region" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Country" Type="nvarchar(max)" Nullable="true" />
     <Property Name="ElevationGain" Type="float" Nullable="true" />
@@ -91,13 +93,14 @@
           <NavigationProperty Name="Users" Relationship="EFDBContext.WorkoutsUsers" FromRole="Workouts" ToRole="Users" />
           <Property Name="UsersId" Type="Int64" Nullable="false" />
           <Property Name="StartDateTime" Type="DateTime" Nullable="false" />
-          <Property Name="StartLocation" Type="Geography" Nullable="false" />
+          <Property Name="StartLocation" Type="Geography" Nullable="true" />
           <Property Name="AVGPace" Type="Time" Nullable="true" />
           <Property Name="Circular" Type="Boolean" Nullable="false" />
           <Property Name="EndLocation" Type="Geography" Nullable="true" />
           <Property Name="Distance" Type="Double" Nullable="true" />
           <Property Name="MaxNumberPeople" Type="Int16" Nullable="true" />
-          <Property Name="City" Type="String" Nullable="true" />
+          <Property Name="Zone" Type="String" Nullable="false" />
+          <Property Name="City" Type="String" Nullable="false" />
           <Property Name="Region" Type="String" Nullable="true" />
           <Property Name="Country" Type="String" Nullable="true" />
           <Property Name="ElevationGain" Type="Double" Nullable="true" />
@@ -136,7 +139,8 @@
           <Property Name="EndLocation" Type="Geography" Nullable="true" />
           <Property Name="Distance" Type="Double" Nullable="true" />
           <Property Name="MaxNumberPeople" Type="Int16" Nullable="true" />
-          <Property Name="City" Type="String" Nullable="true" />
+          <Property Name="Zone" Type="String" Nullable="false" />
+          <Property Name="City" Type="String" Nullable="false" />
           <Property Name="Region" Type="String" Nullable="true" />
           <Property Name="Country" Type="String" Nullable="true" />
           <Property Name="ElevationGain" Type="Double" Nullable="true" />
@@ -159,6 +163,7 @@
           <ScalarProperty Name="EndLocation" ColumnName="EndLocation" />
           <ScalarProperty Name="Distance" ColumnName="Distance" />
           <ScalarProperty Name="MaxNumberPeople" ColumnName="MaxNumberPeople" />
+          <ScalarProperty Name="Zone" ColumnName="Zone" />
           <ScalarProperty Name="City" ColumnName="City" />
           <ScalarProperty Name="Region" ColumnName="Region" />
           <ScalarProperty Name="Country" ColumnName="Country" />
@@ -187,6 +192,7 @@
           <ScalarProperty Name="EndLocation" ColumnName="EndLocation" />
           <ScalarProperty Name="Distance" ColumnName="Distance" />
           <ScalarProperty Name="MaxNumberPeople" ColumnName="MaxNumberPeople" />
+          <ScalarProperty Name="Zone" ColumnName="Zone" />
           <ScalarProperty Name="City" ColumnName="City" />
           <ScalarProperty Name="Region" ColumnName="Region" />
           <ScalarProperty Name="Country" ColumnName="Country" />
