@@ -41,11 +41,6 @@
                         @item.StartDateTime.ToString("yyyy/MM/dd HH:mm:ss")
                     </td>
                     <td>
-                        <a href='@Url.Action("Register", "Account")'> @*style="text-align:center; display:block;" >*@
-                            <img src='@Url.Content("~/Content/Images/OSMImage.png")' />
-                        </a>                        
-                    </td>
-                    <td>
                         @Html.DisplayFor(modelItem => item.AVGPace)
                     </td>
                     <td>
@@ -75,9 +70,6 @@
                     @Html.DisplayNameFor(model => model.StartDateTime)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.StartLocation)
-                </th>
-                <th>
                     @Html.DisplayNameFor(model => model.AVGPace)
                 </th>
                 <th>
@@ -85,6 +77,9 @@
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Distance)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Zone)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.City)

@@ -35,7 +35,7 @@ namespace BlaBlaRunProject.Controllers.Base
         {
             var list = await repository.EntitiesAsync;
             var view = await Task.Run(() => list.Where(predicate));
-
+            
             return View(view);
         }
 

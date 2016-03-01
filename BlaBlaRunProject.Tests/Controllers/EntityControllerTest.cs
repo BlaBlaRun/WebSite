@@ -143,7 +143,8 @@ namespace BlaBlaRunProject.Tests.Controllers
 
             // Act
             ViewResult result = await controller.Index() as ViewResult;
-            IDbSet<TEntity> lEntitiesController = result.Model as IDbSet<TEntity>;
+            //IDbSet<TEntity> lEntitiesController = result.Model as IDbSet<TEntity>;
+            IQueryable<TEntity> lEntitiesController = result.Model as IQueryable<TEntity>;
 
             // Assert
             Assert.IsNotNull(result);

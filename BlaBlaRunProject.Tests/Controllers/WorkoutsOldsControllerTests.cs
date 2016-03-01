@@ -84,7 +84,9 @@ namespace BlaBlaRunProject.Controllers.Tests
                 Id = IdParam,
                 StartLocation = DbGeography.FromText("POINT(-122.335197 57.646711)"),
                 StartDateTime = DateTime.Now,
-                Circular = true
+                Circular = true,
+                Zone = "AAA",
+                City =  "Madrid"
             };
             return oWorkoutsOld;
 
