@@ -1,106 +1,105 @@
 ﻿@model IEnumerable<BlaBlaRunProject.Domain.Concrete.Workouts>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Entrenos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Entrenos</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.StartDateTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StartLocation)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AVGPace)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Circular)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EndLocation)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Distance)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MaxNumberPeople)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Zone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.City)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Region)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Country)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ElevationGain)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Users.Id)
-        </th>
-        <th></th>
-    </tr>
+<div class="table-responsive">
+    <table id="table" class="compact nowrap" cellspacing="0">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.StartDateTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AVGPace)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Circular)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Distance)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Zone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.City)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartDateTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartLocation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AVGPace)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Circular)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EndLocation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Distance)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MaxNumberPeople)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.City)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Zone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Region)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Country)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ElevationGain)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Users.Id)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+                        @item.StartDateTime.ToString("yyyy/MM/dd HH:mm:ss")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AVGPace)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Circular)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Distance)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Zone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.City)
+                    </td>
+                    <td>
+                        @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |*@
+                        @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Contactar", "Register", "Account")
+                        @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.StartDateTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AVGPace)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Circular)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Distance)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Zone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.City)
+                </th>
+                <th></th>
+            </tr>
+        </tfoot>
+
+    </table>
+</div>
+
+@section scripts
+{
+
+    <link rel="stylesheet" type="text/css" href="~/Content/DataTables/jquery.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/DataTables/jquery.dataTables.css">
+
+
+    <script type="text/javascript" language="javascript" src="~/Scripts/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" language="javascript" src="~/Scripts/DataTables/jquery.dataTables.js"></script>
+    <script type="text/javascript" language="javascript" src="~/Scripts/InitializeDataTables.js"></script>
+
 }
-
-</table>

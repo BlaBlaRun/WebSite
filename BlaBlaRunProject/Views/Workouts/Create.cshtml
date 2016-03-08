@@ -1,11 +1,11 @@
 ﻿@model BlaBlaRunProject.Domain.Concrete.Workouts
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Nuevo Entreno";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<h2>Nuevo</h2>
 
 
 @using (Html.BeginForm()) 
@@ -13,30 +13,15 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Workouts</h4>
+        <h4>Entrenamiento</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.UsersId, "UsersId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("UsersId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.UsersId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
+        
         <div class="form-group">
             @Html.LabelFor(model => model.StartDateTime, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.StartDateTime, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.StartDateTime, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.StartLocation, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.StartLocation, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.StartLocation, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -55,14 +40,6 @@
                     @Html.EditorFor(model => model.Circular)
                     @Html.ValidationMessageFor(model => model.Circular, "", new { @class = "text-danger" })
                 </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.EndLocation, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.EndLocation, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.EndLocation, "", new { @class = "text-danger" })
             </div>
         </div>
 
