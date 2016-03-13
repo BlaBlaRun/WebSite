@@ -18,7 +18,7 @@ namespace BlaBlaRunProject.Domain.Entities
         [Display(Name = "Comienzo")]
         public System.Data.Entity.Spatial.DbGeography StartLocation { get; set; }
 
-        [Display(Name = "Ritmo Medio")]
+        [Display(Name = "Ritmo Medio (MM:SS)")]
         public Nullable<System.TimeSpan> AVGPace { get; set; }
 
         [Display(Name = "Circular?")]
@@ -27,7 +27,7 @@ namespace BlaBlaRunProject.Domain.Entities
         [Display(Name = "Finalización")]
         public System.Data.Entity.Spatial.DbGeography EndLocation { get; set; }
 
-        [Display(Name = "Distancia")]
+        [Display(Name = "Distancia (M)")]
         public Nullable<double> Distance { get; set; }
 
         [Display(Name = "Personas")]
@@ -42,7 +42,7 @@ namespace BlaBlaRunProject.Domain.Entities
         [Display(Name = "Pais")]
         public string Country { get; set; }
 
-        [Display(Name = "Desnivel")]
+        [Display(Name = "Desnivel (M)")]
         public Nullable<double> ElevationGain { get; set; }
     }
 }

@@ -66,7 +66,7 @@ namespace BlaBlaRunProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,UsersId,StartDateTime,StartLocation,AVGPace,Circular,EndLocation,Distance,MaxNumberPeaople,City,Region,Country,ElevationGain")] Workouts workouts)
+        public async Task<ActionResult> Create([Bind(Include = "Id,UsersId,StartDateTime,StartLocation,AVGPace,Circular,EndLocation,Distance,MaxNumberPeaople,Zone,City,Region,Country,ElevationGain")] Workouts workouts)
         {
             if (ModelState.IsValid)
             {
@@ -101,7 +101,7 @@ namespace BlaBlaRunProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,UsersId,StartDateTime,StartLocation,AVGPace,Circular,EndLocation,Distance,MaxNumberPeaople,City,Region,Country,ElevationGain")] Workouts workouts)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,UsersId,StartDateTime,StartLocation,AVGPace,Circular,EndLocation,Distance,MaxNumberPeaople,Zone,City,Region,Country,ElevationGain")] Workouts workouts)
         {
             if (ModelState.IsValid)
             {
