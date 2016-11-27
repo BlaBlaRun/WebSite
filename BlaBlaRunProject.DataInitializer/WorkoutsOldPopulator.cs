@@ -79,9 +79,13 @@ namespace BlaBlaRunProject.DataPopulator
         {
             TimeSpan start = TimeSpan.FromMinutes(3.5);
             TimeSpan end = TimeSpan.FromMinutes(7);
+
             int maxSeconds = (int)((end - start).TotalSeconds);
 
-            int seconds = rnd.Next(maxSeconds);
+            int numPosible = ((int)Math.Round((double)maxSeconds / 10)) + 1 + 1;
+            int random = rnd.Next(1, numPosible);
+            
+            int seconds = (random - 1) * 10;
             TimeSpan t = start.Add(TimeSpan.FromSeconds(seconds));
             return t;
         }
