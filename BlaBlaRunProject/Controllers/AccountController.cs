@@ -196,7 +196,7 @@ namespace BlaBlaRunProject.WebUI.Controllers
                     oUser.AspNetUserId = new Guid(createdUser.Id);
                     oUser.UserName = model.Email;
 
-                    UsersController oUsersController = new UsersController(unitOfWork);
+                    UsersApiController oUsersController = new UsersApiController(unitOfWork);
                     var r = await oUsersController.Post(oUser);
                     if (r == null)
                     {

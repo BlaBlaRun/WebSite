@@ -1,0 +1,5 @@
+{
+  "ambientDependencies": {
+    "TypeLite": "file:scripts/TypeLite.Net4.d.ts"
+  }
+}

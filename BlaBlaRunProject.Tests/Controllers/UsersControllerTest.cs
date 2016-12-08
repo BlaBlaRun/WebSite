@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace BlaBlaRunProject.Tests.Controllers
 {
     [TestClass]
-    public class UsersControllerTest : EntityControllerApiTest<long, Users, UsersController>
+    public class UsersControllerTest : EntityControllerApiTest<long, Users, UsersApiController>
     {
         Guid GuidTest = Guid.NewGuid();
         #region Mock
