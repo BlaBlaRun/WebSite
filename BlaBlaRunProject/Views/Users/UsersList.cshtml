@@ -6,12 +6,11 @@
     </thead>
     <tfoot>
         <tr>
-            <td class="last-status" colspan="10">{{lastStatus}}</td>
+            <td class="last-status" colspan="3">{{lastStatus}}</td>
         </tr>
     </tfoot>
     <tbody>
-        <tr *ngFor="let user of list"
-            (click)="onSelect(ActiveVessel)">
+        <tr *ngFor="let user of list">
             <td style="display:none;">
                 {{user.Id}}
             </td>

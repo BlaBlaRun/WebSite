@@ -21,6 +21,21 @@
     </script>
 </head>
 
-<app-Users-List>
-    Loading...
+
+<app-Users-List homeWindowRefreshInterval="0"
+                        clientUrl="@Url.Action("GetAllUsers", "Users")"
+                        columnNames="Id,AspNetUserId,UserName"
+                        itemSelectecUrl="@Url.Action("Edit", "Vessel")">
+        Loading...
 </app-Users-List>
+
+@section scripts
+{
+    <link href="~/Content/DataTables/dataTables.jqueryui.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/Content/DataTables/jquery.dataTables.css">
+
+
+    <script type="text/javascript" language="javascript" src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" language="javascript" src="~/Scripts/DataTables/jquery.dataTables.js"></script>
+
+}

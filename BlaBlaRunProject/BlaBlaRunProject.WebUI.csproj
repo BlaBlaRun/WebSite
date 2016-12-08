@@ -399,8 +399,10 @@
     <TypeScriptCompile Include="app\app.module.ts" />
     <TypeScriptCompile Include="app\main.ts" />
     <TypeScriptCompile Include="app\Users\app.component.ts" />
+    <TypeScriptCompile Include="app\Users\app.componentHome.ts" />
     <TypeScriptCompile Include="app\Users\app.module.ts" />
     <TypeScriptCompile Include="app\Users\main.ts" />
+    <TypeScriptCompile Include="app\Users\app.componentUsersList.ts" />
     <TypeScriptCompile Include="app\utils\HttpHelpers.ts" />
     <TypeScriptCompile Include="Scripts\Enums.ts">
       <DependentUpon>TypeLite.Net4.tt</DependentUpon>
