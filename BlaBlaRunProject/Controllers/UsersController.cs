@@ -6,6 +6,8 @@ using System.Web.Mvc;
 
 namespace BlaBlaRunProject.Controllers
 {
+
+    [Authorize(Roles = "Admin")]
     public class UsersController : Controller
     {
         // GET: Users
