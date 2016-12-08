@@ -21,21 +21,22 @@ var HttpHelpers = (function () {
         })
             .catch(this._handleError);
     };
-    //postaction<T>(param: T, path: string) {
-    //    this.errormsg = null;
-    //    let body = JSON.stringify(param);
-    //    let headers = new Headers({ 'Content-Type': 'application/json' });
-    //    let options = new RequestOptions({ headers: headers });
-    //    return this._http.post(path, body, options)
-    //        .map(m => {
-    //            var jsonresult = <Models.ViewModel.JSONReturnVM<T>>m.json();
-    //            if (jsonresult.haserror) {
-    //                this.errormsg = jsonresult.errormessage;
-    //            }
-    //            return jsonresult;
-    //        })
-    //        .catch(this._handleError);
-    //}
+    HttpHelpers.prototype.postaction = function (param, path) {
+        var _this = this;
+        this.errormsg = null;
+        var body = JSON.stringify(param);
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this._http.post(path, body, options)
+            .map(function (m) {
+            var jsonresult = m.json();
+            if (jsonresult.haserror) {
+                _this.errormsg = jsonresult.errormessage;
+            }
+            return jsonresult;
+        })
+            .catch(this._handleError);
+    };
     HttpHelpers.prototype.postRequest = function (url, data) {
         var _body = JSON.stringify(data);
         var headers = new http_1.Headers({ 'Content-Type': 'application/json;charset=utf-8' });

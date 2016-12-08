@@ -22,25 +22,25 @@ export class HttpHelpers {
             .catch(this._handleError);
     }
 
-    //postaction<T>(param: T, path: string) {
-    //    this.errormsg = null;
+    postaction<T>(param: T, path: string) {
+        this.errormsg = null;
 
-    //    let body = JSON.stringify(param);
-    //    let headers = new Headers({ 'Content-Type': 'application/json' });
-    //    let options = new RequestOptions({ headers: headers });
+        let body = JSON.stringify(param);
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
 
-    //    return this._http.post(path, body, options)
-    //        .map(m => {
-    //            var jsonresult = <Models.ViewModel.JSONReturnVM<T>>m.json();
+        return this._http.post(path, body, options)
+            .map(m => {
+                var jsonresult = <Models.ViewModel.JSONReturnVM<T>>m.json();
 
-    //            if (jsonresult.haserror) {
-    //                this.errormsg = jsonresult.errormessage;
-    //            }
+                if (jsonresult.haserror) {
+                    this.errormsg = jsonresult.errormessage;
+                }
 
-    //            return jsonresult;
-    //        })
-    //        .catch(this._handleError);
-    //}
+                return jsonresult;
+            })
+            .catch(this._handleError);
+    }
     
     protected postRequest(url: string, data: any) {
         let _body = JSON.stringify(data);

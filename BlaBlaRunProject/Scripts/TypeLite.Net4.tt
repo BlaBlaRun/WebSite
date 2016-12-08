@@ -13,7 +13,8 @@
 
 <# var ts = TypeScript.Definitions()
 		.WithReference("Enums.ts")
-		.For<BlaBlaRunProject.Domain.Concrete.Users>();
+		.For<BlaBlaRunProject.Domain.Concrete.Users>()
+		.For<Models.ViewModel.JSONReturnVM<object>>();
 #>
 
 <#= ts.Generate(TsGeneratorOutput.Properties) #>
