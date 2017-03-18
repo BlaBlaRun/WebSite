@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using BlaBlaRunProject.Properties;
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -22,10 +23,10 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Nuevo Entrenamiento", "Create", "Workouts")</li>
-                    <li>@Html.ActionLink("Sobre Nosotros", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                    <li>@Html.ActionLink(Resources.Home, "Index", "Home")</li>
+                    <li>@Html.ActionLink(Resources.AddWorkout, "Create", "Workouts")</li>
+                    <li>@Html.ActionLink(Resources.AboutUs, "About", "Home")</li>
+                    <li>@Html.ActionLink(Resources.Contact, "Contact", "Home")</li>
                     @if (User.IsInRole("Admin"))
                     {
                         <li>@Html.ActionLink("Users", "Index", "Users")</li>
