@@ -133,6 +133,42 @@ namespace BlaBlaRunProject.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Look for a Workout.
+        /// </summary>
+        public static string Search1 {
+            get {
+                return ResourceManager.GetString("Search1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Share your running Workouts | BlaBlaRun.es.
+        /// </summary>
+        public static string Title1 {
+            get {
+                return ResourceManager.GetString("Title1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connecting people who need to train with experimented runners.
+        /// </summary>
+        public static string Title2 {
+            get {
+                return ResourceManager.GetString("Title2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to People of trust. Profiles rated with opinions..
+        /// </summary>
+        public static string Title3 {
+            get {
+                return ResourceManager.GetString("Title3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Users.
         /// </summary>
         public static string Users {

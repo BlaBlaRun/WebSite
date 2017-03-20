@@ -118,19 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutUs" xml:space="preserve">
-    <value>About Us</value>
+    <value>Quienes somos</value>
   </data>
   <data name="AddWorkout" xml:space="preserve">
-    <value>Add Workout</value>
+    <value>Nuevo entreno</value>
   </data>
   <data name="Contact" xml:space="preserve">
-    <value>Contact</value>
+    <value>Contacto</value>
   </data>
   <data name="Hello" xml:space="preserve">
-    <value>Hello</value>
+    <value>Hola</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value>Home</value>
+    <value>Inicio</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Login</value>
@@ -139,19 +139,19 @@
     <value>LogOff</value>
   </data>
   <data name="Register" xml:space="preserve">
-    <value>Register</value>
+    <value>Registrate</value>
   </data>
   <data name="Users" xml:space="preserve">
-    <value>Users</value>
+    <value>Usuarios</value>
   </data>
   <data name="Search1" xml:space="preserve">
-    <value>Look for a Workout</value>
+    <value>Encuentra una ruta</value>
   </data>
   <data name="Title1" xml:space="preserve">
-    <value>Share your running Workouts | BlaBlaRun.es</value>
+    <value>Comparte tu salida a correr en España | BlaBlaRun.es</value>
   </data>
   <data name="Title2" xml:space="preserve">
-    <value>Connecting people who need to train with experimented runners</value>
+    <value>Conectamos corredores para compartir entrenamientos</value>
   </data>
   <data name="Title3" xml:space="preserve">
     <value>People of trust. Profiles rated with opinions.</value>

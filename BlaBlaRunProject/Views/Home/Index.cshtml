@@ -1,18 +1,19 @@
-﻿@{
+﻿@using BlaBlaRunProject.Properties;
+@{
     ViewBag.Title = "Home Page";
 }
 <div class="jumbotron">
     <div class="hp-hero-banner">
-        <h2 class="size16 dark-gray">Conectamos corredores para compartir entrenamientos</h2>
+        <h2 class="size16 dark-gray">@Resources.Title2</h2>
     </div>
     <div class="hp-hero-search clearfix">
-        <h1 class="margin-half-bottom">Encuentra una ruta</h1>
+        <h1 class="margin-half-bottom">@Resources.Search1</h1>
         <p><a href="./WorkoutsOlds/Index" class="btn btn-primary btn-lg">Demo &raquo;</a></p>
-        <p><a href="@Url.Action("Register", "Account")" class="btn btn-primary btn-lg">Registrate &raquo;</a></p>
+        <p><a href="@Url.Action("Register", "Account")" class="btn btn-primary btn-lg">@Resources.Register &raquo;</a></p>
     </div>
     @*<p class="lead">Gente de confianza. Perfiles valorados con opiniones</p>*@
     <div class="hp-hero-footer">
-        <h2 class="margin-bottom align-center size22">Gente de confianza. Perfiles valorados con opiniones.</h2>
+        <h2 class="margin-bottom align-center size22">@Resources.Title3</h2>
     </div>
     
 </div>
