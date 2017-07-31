@@ -29,14 +29,21 @@ namespace BlaBlaRunProject.Controllers.Base
         // GET: TEntity
         protected async Task<ActionResult> Index()
         {
+            var sActionType = "OnClick";
+            var sElement = "Index";
+            CreateAudit(sActionType, sElement);
+            return View(await repository.EntitiesAsync);
+        }
+
+        private void CreateAudit(string sActionType, string sElement)
+        {
             var oAudit = new Audit();
             oAudit.UserIp = GetIPAddress();
             oAudit.UserAgent = Request.UserAgent;
-            oAudit.ActionType = "OnClick";
-            oAudit.Element = "Index";
+            oAudit.ActionType = sActionType;
+            oAudit.Element = sElement;
             oAudit.ActionUTCDate = DateTime.UtcNow;
             oAuditRepository.Insert(oAudit);
-            return View(await repository.EntitiesAsync);
         }
 
         protected string GetIPAddress()
@@ -60,6 +67,9 @@ namespace BlaBlaRunProject.Controllers.Base
         // GET: TEntity
         protected async Task<ActionResult> Index(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
         {
+            var sActionType = "OnClick";
+            var sElement = "Index";
+            CreateAudit(sActionType, sElement);
             var list = await repository.EntitiesAsync;
             var view = await Task.Run(() => list.Where(predicate));
             

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/01/2016 13:58:06
+-- Date Created: 07/31/2017 23:00:23
 -- Generated from EDMX file: C:\Projects\BlaBlaRunProject\BlaBlaRunProject.Domain\Concrete\EFDBContext.edmx
 -- --------------------------------------------------
 
@@ -85,6 +85,17 @@ CREATE TABLE [dbo].[WorkoutsOldSet] (
 );
 GO
 
+-- Creating table 'AuditSet'
+CREATE TABLE [dbo].[AuditSet] (
+    [Id] bigint IDENTITY(1,1) NOT NULL,
+    [UserIp] nvarchar(max)  NOT NULL,
+    [UserAgent] nvarchar(max)  NOT NULL,
+    [ActionType] nvarchar(max)  NOT NULL,
+    [Element] nvarchar(max)  NOT NULL,
+    [ActionUTCDate] datetime  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -104,6 +115,12 @@ GO
 -- Creating primary key on [Id] in table 'WorkoutsOldSet'
 ALTER TABLE [dbo].[WorkoutsOldSet]
 ADD CONSTRAINT [PK_WorkoutsOldSet]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'AuditSet'
+ALTER TABLE [dbo].[AuditSet]
+ADD CONSTRAINT [PK_AuditSet]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 

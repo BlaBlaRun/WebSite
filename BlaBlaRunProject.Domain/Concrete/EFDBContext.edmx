@@ -9,6 +9,7 @@
     <EntitySet Name="WorkoutsSet" EntityType="EFDBContext.Store.WorkoutsSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UsersSet" EntityType="EFDBContext.Store.UsersSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="WorkoutsOldSet" EntityType="EFDBContext.Store.WorkoutsOldSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AuditSet" EntityType="EFDBContext.Store.AuditSet" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="WorkoutsUsers" Association="EFDBContext.Store.WorkoutsUsers">
       <End Role="Workouts" EntitySet="WorkoutsSet" />
       <End Role="Users" EntitySet="UsersSet" />
@@ -59,6 +60,17 @@
     <Property Name="Region" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Country" Type="nvarchar(max)" Nullable="true" />
     <Property Name="ElevationGain" Type="float" Nullable="true" />
+  </EntityType>
+  <EntityType Name="AuditSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserIp" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserAgent" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ActionType" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Element" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ActionUTCDate" Type="datetime" Nullable="false" />
   </EntityType>
   <Association Name="WorkoutsUsers">
     <End Role="Workouts" Type="EFDBContext.Store.WorkoutsSet" Multiplicity="*" />
@@ -209,6 +221,18 @@
           <ScalarProperty Name="Region" ColumnName="Region" />
           <ScalarProperty Name="Country" ColumnName="Country" />
           <ScalarProperty Name="ElevationGain" ColumnName="ElevationGain" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AuditSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EFDBContext.Audit)">
+        <MappingFragment StoreEntitySet="AuditSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserIp" ColumnName="UserIp" />
+          <ScalarProperty Name="UserAgent" ColumnName="UserAgent" />
+          <ScalarProperty Name="ActionType" ColumnName="ActionType" />
+          <ScalarProperty Name="Element" ColumnName="Element" />
+          <ScalarProperty Name="ActionUTCDate" ColumnName="ActionUTCDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -22,7 +22,7 @@ namespace BlaBlaRunProject.Domain.Concrete
         
     }
 
-    [MetadataType(typeof(BlaBlaRunProject.Domain.Entities.WorkoutOldDTO))]
+    [MetadataType(typeof(BlaBlaRunProject.Domain.Entities.AuditDTO))]
     public partial class Audit : IIdentityKey<long>
     {
 

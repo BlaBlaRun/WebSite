@@ -10,18 +10,16 @@ using System.Web.Mvc;
 using BlaBlaRunProject.Domain.Concrete;
 using BlaBlaRunProject.DataAccess.Abstract;
 using System.Web.Script.Serialization;
+using BlaBlaRunProject.Controllers.Base;
+using BlaBlaRunProject.WebUI.Controllers.Interfaces;
 
 namespace BlaBlaRunProject.Controllers
 {
-    public class WorkoutsController: Controller
+    public class WorkoutsController: BaseController<long, Workouts>, IMVCController<long, Workouts>
     {
-        private IUnitOfWork unitOfWork;
-        private IRepository<long, Workouts> repository;
 
-        public WorkoutsController(IUnitOfWork uow)
+        public WorkoutsController(IUnitOfWork uow) : base(uow)
         {
-            unitOfWork = uow;
-            repository = unitOfWork.Repository<long, Workouts>();
         }
         // GET: Workouts
         public async Task<ActionResult> Index()

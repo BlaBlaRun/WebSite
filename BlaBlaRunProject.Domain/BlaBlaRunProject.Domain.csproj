@@ -80,6 +80,7 @@
     <Compile Include="Concrete\WorkoutsOld.cs">
       <DependentUpon>EFDBContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\AuditDTO.cs" />
     <Compile Include="Entities\UsersDTO.cs" />
     <Compile Include="Entities\WorkoutDTO.cs" />
     <Compile Include="Entities\WorkoutOldDTO.cs" />
