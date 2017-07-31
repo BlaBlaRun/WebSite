@@ -52,6 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Concrete\Audit.cs">
+      <DependentUpon>EFDBContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Concrete\EFDBContext.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

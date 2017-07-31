@@ -28,5 +28,6 @@ namespace BlaBlaRunProject.Domain.Concrete
         public virtual DbSet<Workouts> WorkoutsSet { get; set; }
         public virtual DbSet<Users> UsersSet { get; set; }
         public virtual DbSet<WorkoutsOld> WorkoutsOldSet { get; set; }
+        public virtual DbSet<Audit> AuditSet { get; set; }
     }
 }

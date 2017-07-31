@@ -1,4 +1,5 @@
 ﻿using BlaBlaRunProject.DataAccess.Abstract;
+using BlaBlaRunProject.Domain.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -15,18 +16,44 @@ namespace BlaBlaRunProject.Controllers.Base
         where TEntity : class, IIdentityKey<TKey>
     {
         protected IUnitOfWork unitOfWork;
+        protected IRepository<long, Audit> oAuditRepository;
         protected IRepository<TKey, TEntity> repository;
 
         public BaseController(IUnitOfWork uow)
         {
             unitOfWork = uow;
+            oAuditRepository = unitOfWork.Repository<long, Audit>();
             repository = unitOfWork.Repository<TKey, TEntity>();
         }
 
         // GET: TEntity
         protected async Task<ActionResult> Index()
         {
+            var oAudit = new Audit();
+            oAudit.UserIp = GetIPAddress();
+            oAudit.UserAgent = Request.UserAgent;
+            oAudit.ActionType = "OnClick";
+            oAudit.Element = "Index";
+            oAudit.ActionUTCDate = DateTime.UtcNow;
+            oAuditRepository.Insert(oAudit);
             return View(await repository.EntitiesAsync);
+        }
+
+        protected string GetIPAddress()
+        {
+            System.Web.HttpContext context = System.Web.HttpContext.Current;
+            string ipAddress = context.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+
+            if (!string.IsNullOrEmpty(ipAddress))
+            {
+                string[] addresses = ipAddress.Split(',');
+                if (addresses.Length != 0)
+                {
+                    return addresses[0];
+                }
+            }
+
+            return context.Request.ServerVariables["REMOTE_ADDR"];
         }
 
 

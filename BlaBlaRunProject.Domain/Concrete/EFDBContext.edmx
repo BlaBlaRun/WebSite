@@ -84,6 +84,7 @@
             <End Role="Users" EntitySet="UsersSet" />
           </AssociationSet>
           <EntitySet Name="WorkoutsOldSet" EntityType="EFDBContext.WorkoutsOld" />
+          <EntitySet Name="AuditSet" EntityType="EFDBContext.Audit" />
         </EntityContainer>
         <EntityType Name="Workouts">
           <Key>
@@ -144,6 +145,17 @@
           <Property Name="Region" Type="String" Nullable="true" />
           <Property Name="Country" Type="String" Nullable="true" />
           <Property Name="ElevationGain" Type="Double" Nullable="true" />
+        </EntityType>
+        <EntityType Name="Audit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserIp" Type="String" Nullable="false" />
+          <Property Name="UserAgent" Type="String" Nullable="false" />
+          <Property Name="ActionType" Type="String" Nullable="false" />
+          <Property Name="Element" Type="String" Nullable="false" />
+          <Property Name="ActionUTCDate" Type="DateTime" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>

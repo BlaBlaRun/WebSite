@@ -9,6 +9,7 @@
         <EntityTypeShape EntityType="EFDBContext.Users" Width="1.5" PointX="0.875" PointY="0.875" />
         <AssociationConnector Association="EFDBContext.WorkoutsUsers" />
         <EntityTypeShape EntityType="EFDBContext.WorkoutsOld" Width="1.5" PointX="4.125" PointY="5.25" />
+        <EntityTypeShape EntityType="EFDBContext.Audit" Width="1.5" PointX="8.125" PointY="2.25" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
